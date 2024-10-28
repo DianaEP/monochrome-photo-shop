@@ -1,0 +1,54 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem 0.2rem 1rem; 
+    border-bottom: 1px solid var(--color-border);
+
+}
+
+.homePage{
+    background-color: #e6e6e6;
+}
+
+.notHomePage{
+    background-color: transparent;
+}
+
+.logo{
+    display: flex;
+    column-gap: 1rem;
+}
+
+
+.logo img{
+    width: 25px;
+}
+
+.nav{
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.list{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   
+}
+
+.list li:nth-child(2){
+    margin-right: 2rem;
+}
+
+.pages{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 4rem;
+}
+
+

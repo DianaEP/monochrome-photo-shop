@@ -1,26 +1,41 @@
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
-import RouteLayout from './page-components/RouteLayout'
+import RootLayout from './page-components/RootLayout'
 import HomePage from './page-components/HomePage'
 import ProductsPage from './page-components/ProductsPage'
 import AuthPage from './page-components/AuthPage'
+import ProductPage from './page-components/ProductPage'
+import CartPage from './page-components/CartPage'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element:<RouteLayout/>,
+    element:<RootLayout/>,
     children:[
       {
-        path: '/',
+        index: true,
         element:<HomePage/>
       },
       {
-        path: '/products',
-        element:<ProductsPage/>
+        path: 'products',
+        children: [
+          {
+            index: true,
+            element:<ProductsPage/>
+          },
+          {
+            path:':id',
+            element: <ProductPage/>
+          }
+        ]
       },
       {
-        path: '/login',
+        path: 'cart',
+        element:<CartPage/>
+      },
+      {
+        path: 'login',
         element:<AuthPage/>
       }
     ]

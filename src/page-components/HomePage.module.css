@@ -1,0 +1,68 @@
+.home{
+    width: 100%;
+    height: 35%;
+    position: relative;
+}
+
+.home img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.title{
+    width: 40rem;
+    position: absolute;
+    top: 7rem;
+    left: 3rem;
+    text-transform: uppercase;
+    line-height: 8rem;
+    font-size: 6rem;
+    font-family: var(--font-family-title);
+    text-align: center;
+}
+
+
+.text{
+    width: 50%;
+    margin: 0 auto;
+    padding: 1rem;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    text-align: center;
+}
+
+.button{
+    width: 40rem;
+    text-align: center;
+    position: absolute;
+    bottom: 10rem;
+    left: 3rem;
+}
+
+@media(max-width: 1700px){
+    .title{
+        width: 35rem;
+        top: 5rem;
+        left: 2rem;
+        line-height: 7rem;
+        font-size: 5rem;
+    }
+
+    
+}
+
+@media(max-width: 1390px){
+    .title{
+        width: 30rem;
+        position: absolute;
+        top: 7rem;
+        left: 1rem;
+        text-transform: uppercase;
+        line-height: 6rem;
+        font-size: 4rem;
+        font-family: var(--font-family-title);
+        text-align: center;
+    }
+}

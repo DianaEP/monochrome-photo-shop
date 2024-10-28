@@ -5,6 +5,7 @@ export default function Search(){
         <>
             <div>
                 <IoSearch />
+                <input type="text" />
             </div>
         </>
     )
