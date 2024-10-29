@@ -50,6 +50,20 @@
         font-size: 5rem;
     }
 
+    .button{
+        bottom: 10rem;
+        left: 0rem;
+    }
+
+    
+}
+
+@media(max-width: 1580px){
+    .button{
+        bottom: 6rem;
+        left: 0rem;
+    }
+
     
 }
 
@@ -64,5 +78,10 @@
         font-size: 4rem;
         font-family: var(--font-family-title);
         text-align: center;
+    }
+
+    .button{
+        bottom: 10rem;
+        left: -4rem;
     }
 }

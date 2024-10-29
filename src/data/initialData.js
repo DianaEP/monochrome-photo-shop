@@ -1,0 +1,244 @@
+const initialProducts = {
+    'product1': {
+        id: '1',
+        title: 'Harvested Simplicity',
+        description: 'A close-up capture of freshly picked apples, their textures brought to life in striking black and white. The delicate play of light and shadow reveals the natural curves and details, evoking the charm of simplicity and the richness of a rustic harvest.',
+        price: 29.99,
+        imageId: '/images/apple-from-above.jpeg',
+        category: 'fruits'
+    },
+    'product2': {
+        id: '2',
+        title: 'Frontier of the Sea',
+        description: ' The bow of a boat elegantly slicing through still waters, captured in striking black and white. The interplay of light and shadow highlights the sleek contours and textures, evoking a sense of adventure and the promise of exploration beyond the horizon.',
+        price: 35.99,
+        imageId: '/images/boat.jpg',
+        category: 'sailing'
+    },
+    'product3': {
+        id: '3',
+        title: 'Tides of Togetherness',
+        description: 'A striking monochrome capture of two boats gently swaying on calm waters, their elegant forms defined by the interplay of light and shadow. The muted tones highlight the curves and lines of the vessels, evoking a sense of tranquility and the timeless rhythm of life at sea.',
+        price: 40.95,
+        imageId: '/images/boats-on-sea-shore.jpeg',
+        category: 'sailing'
+    },
+    'product4': {
+        id: '4',
+        title: 'Timeless Blossoms',
+        description: 'A monochrome capture of a bucket filled with blooming roses, elegantly arranged on a rustic table. The soft interplay of light and shadow enhances the delicate petals and intricate details, evoking a sense of romance and the enduring beauty of nature’s finest offerings.',
+        price: 35.50,
+        imageId: '/images/bucket-on-a-table.jpeg',
+        category: 'flowers'
+    },
+    'product5': {
+        id: '5',
+        title: 'Urban Pulse',
+        description: ' A dynamic monochrome scene capturing the bustling energy of night city traffic. The contrasting lights of vehicles create a mesmerizing flow of movement against the darkened backdrop, highlighting the vibrant rhythm of urban life and the interconnectedness of its inhabitants',
+        price: 40.99,
+        imageId: '/images/buenos-aires.jpeg',
+        category: 'lights'
+    },
+    'product6': {
+        id: '6',
+        title: 'Morning Warmth',
+        description: 'A soothing monochrome capture of a steaming cup of tea, delicately infused with cinnamon, resting on a sunlit table. The soft textures of the cup and the gentle swirl of steam create a cozy atmosphere, inviting you to savor the comforting embrace of a tranquil morning ritual.',
+        price: 25.50,
+        imageId: '/images/cinnamon-on-tray.jpg',
+        category: 'minimalist'
+    },
+    'product7':{
+        id: '7',
+        title: 'Solitary Resilience',
+        description: "A striking monochrome portrayal of a vast desert landscape dotted with resilient trees, their twisted branches reaching towards the expansive sky. The interplay of light and shadow across the arid terrain accentuates the stark beauty and endurance of life in one of nature's harshest environments.",
+        price: 39.99,
+        imageId: '/images/desert-with-trees.jpeg',
+        category: 'nature'
+    },
+    'product8': {
+        id: '8',
+        title: 'Café Companionship',
+        description: " A charming monochrome scene capturing a dog nestled comfortably in an old-style café, surrounded by vintage decor. The soft play of light highlights the dog's relaxed demeanor, evoking a sense of warmth and nostalgia, as the ambiance of the café invites patrons to pause and enjoy life's simple pleasures.",
+        price: 45.99,
+        imageId: '/images/dog.jpeg',
+        category: 'animals'
+    },
+    'product9': {
+        id: '9',
+        title: 'Whispers of Nature',
+        description: " A captivating monochrome portrait of a girl delicately covering one eye with a blooming flower, creating a poignant contrast between youth and nature's beauty. The soft textures of her features and the intricate details of the flower are enhanced by the interplay of light and shadow, evoking a sense of mystery and the enchanting connection between humanity and the natural world.",
+        price: 42.50,
+        imageId: '/images/face.jpg',
+        category: 'people'
+    },
+    'product10': {
+        id: '10',
+        title: 'Silent Stories',
+        description: "A poignant monochrome capture of the weary feet of two men resting, revealing the raw textures and wear of a life lived on the margins. The interplay of light and shadow accentuates the lines and contours of their soles, evoking a sense of resilience and the untold stories that lie beneath the surface of their quiet existence.",
+        price: 33.50,
+        imageId: '/images/feet.jpeg',
+        category: 'people'
+    },
+    'product11': {
+        id: '11',
+        title: 'Lone Sentinel',
+        description: "A striking monochrome depiction of a solitary tree standing tall in a vast field, its branches reaching out against an open sky. The contrast between the tree's intricate silhouette and the expansive landscape evokes a sense of solitude and tranquility, celebrating the quiet strength and beauty found in nature's simplicity.",
+        price: 39.99,
+        imageId: '/images/field-landscape.jpg',
+        category: 'nature'
+    },
+    'product12': {
+        id: '12',
+        title: 'Petals of Solitude',
+        description: "A delicate monochrome capture of a single flower, its intricate petals unfurling with grace against a soft backdrop. The interplay of light and shadow reveals the subtle details of its form, evoking a sense of quiet beauty and the profound simplicity found in nature's solitary moments.",
+        price: 25.99,
+        imageId: '/images/flower.jpeg',
+        category: 'flowers'
+    },
+    'product13': {
+        id: '13',
+        title: 'Joyful Freedom',
+        description: "A heartwarming monochrome scene of a child running joyfully across an empty beach, their carefree spirit captured against the vastness of the shoreline. The soft textures of the sand and the gentle lapping of waves in the background create a serene atmosphere, evoking the pure essence of childhood and the exhilarating freedom of open spaces.",
+        price: 45.99,
+        imageId: '/images/freedom.jpg',
+        category: 'people'
+    },
+    'product14': {
+        id: '14',
+        title: 'Graceful Heights',
+        description: "A striking monochrome capture of a giraffe's elongated neck, elegantly curving against a soft, blurred backdrop. The intricate patterns of its fur and the gentle play of light and shadow emphasize its graceful form, evoking a sense of wonder at the beauty and uniqueness of nature's designs",
+        price: 25.50,
+        imageId: '/images/giraffe-neck.jpeg',
+        category: 'animals'
+    },
+    'product15': {
+        id: '15',
+        title: 'Echoes of Celebration',
+        description: "A striking monochrome capture of hands adorned with the remnants of Holi paint, showcasing the intricate patterns left behind from the vibrant festival. The soft interplay of light and shadow highlights the textures of the skin and the delicate traces of color, evoking a sense of joy and the rich cultural traditions that unite people in celebration, even when rendered in shades of gray.",
+        price: 30.50,
+        imageId: '/images/hands.jpg',
+        category: 'people'
+    },
+    'product16': {
+        id: '16',
+        title: 'Conquering the Peaks',
+        description: " A powerful monochrome depiction of a group of hikers trekking up a snow-covered mountain, their silhouettes set against the vast, frosty landscape. The textures of the snow and the determination on their faces are highlighted by the interplay of light and shadow, evoking a sense of adventure and the shared camaraderie found in nature's most challenging terrains.",
+        price: 35.50,
+        imageId: '/images/hiking.jpeg',
+        category: 'people'
+    },
+    'product17': {
+        id: '17',
+        title: 'Wonders of the World',
+        description: " A serene monochrome portrait of a child perched on a high peak, gazing out at the breathtaking expanse of nature below. The delicate features of the child are framed by the vastness of the landscape, and the soft interplay of light and shadow captures the innocence and awe of exploration, evoking a sense of wonder and the limitless possibilities of the natural world.",
+        price: 39.99,
+        imageId: '/images/kid.jpg',
+        category: 'people'
+    },
+    'product18': {
+        id: '18',
+        title: 'Echoes of Presence',
+        description: "A poignant monochrome capture of a man's shadow cast on the pavement, telling a silent story of solitude and introspection. The stark contrast between light and shadow accentuates the contours of his figure, evoking a sense of mystery and the fleeting moments of everyday life that often go unnoticed.",
+        price: 40.99,
+        imageId: '/images/man-on-street.jpeg',
+        category: 'shadow'
+    },
+    'product19': {
+        id: '19',
+        title: "Nature's Embrace",
+        description: " A delicate monochrome depiction of a single flower accompanied by its leaves, beautifully highlighting the intricate details of both. The soft interplay of light and shadow accentuates the gentle curves and textures, evoking a sense of tranquility and the simple yet profound beauty found in nature's design.",
+        price: 29.99,
+        imageId: '/images/photograph-of-a-plant.jpeg',
+        category: 'flowers'
+    },
+    'product20': {
+        id: '20',
+        title: "Nautical Ties",
+        description: "A striking monochrome capture of a boat rope basking in the sunlight, its textures and twists highlighted by the warm glow. The interplay of light and shadow accentuates the rope's rugged fibers, evoking a sense of maritime adventure and the essential bonds that tether us to the sea.",
+        price: 25.99,
+        imageId: '/images/rope-sun.jpg',
+        category: 'sailing'
+    },
+    'product21': {
+        id: '21',
+        title: "Deck side Serenity",
+        description: "A compelling monochrome capture of a boat rope sprawled across the deck, its rugged texture contrasting beautifully with the smooth surface beneath. The soft interplay of light and shadow accentuates the rope’s intricate details, evoking a sense of calm and the quiet moments found in the life of a sailor.",
+        price: 25.99,
+        imageId: '/images/rope.jpg',
+        category: 'sailing'
+    },
+    'product22': {
+        id: '22',
+        title: "Reflections of Stillness",
+        description: " A captivating monochrome portrayal of the shadow cast by a vase and two glasses, creating an intricate play of forms on the surface below. The delicate contours and shapes of the objects are beautifully accentuated by the soft light, evoking a sense of tranquility and the quiet beauty of everyday moments.",
+        price: 30.99,
+        imageId: '/images/shadow.jpeg',
+        category: 'shadow'
+    },
+    'product23': {
+        id: '23',
+        title: "Solitary Elegance",
+        description: "A striking monochrome scene featuring a side table standing alone in an empty room, adorned with a single hat resting atop it. The soft interplay of light and shadow highlights the table's contours and the hat's texture, evoking a sense of nostalgia and the quiet stories that linger in spaces once filled with life.",
+        price: 29.99,
+        imageId: '/images/side-table.jpeg',
+        category: 'minimalist'
+    },
+    'product24': {
+        id: '24',
+        title: "Blossoming Joy",
+        description: "A delightful monochrome portrait capturing a girl's joyful smile partially obscured by a vibrant sunflower, symbolizing the beauty of youth and nature. The intricate details of the flower contrast beautifully with the girl's radiant expression, evoking a sense of happiness and the warmth of sunny days spent in nature's embrace.",
+        price: 40.99,
+        imageId: '/images/smiling-face.jpg',
+        category: 'people'
+    },
+    'product25': {
+        id: '25',
+        title: "Curved Ascent",
+        description: "An elegant monochrome capture of a spiral staircase, its graceful curves drawing the eye upward in a mesmerizing motion. The interplay of light and shadow highlights the intricate details of the staircase's design, evoking a sense of mystery and the journey of ascent through architectural beauty.",
+        price: 40.99,
+        imageId: '/images/spiral-staircase.jpeg',
+        category: 'minimalist'
+    },
+    'product26': {
+        id: '26',
+        title: "Citrus Harmony",
+        description: "A charming monochrome depiction of a bowl filled with vibrant tangerines, their round shapes and textured skins beautifully contrasting against the smooth surface of the bowl. The soft interplay of light and shadow adds depth to the composition, evoking a sense of warmth and the simple pleasures of fresh fruit at home.",
+        price: 25.99,
+        imageId: '/images/tangerines-with-leaves.jpg',
+        category: 'fruits'
+    },
+    'product27': {
+        id: '27',
+        title: "Midnight Journey",
+        description: " A dramatic monochrome capture of a highway at night, where the stark contrasts between shadows and light define the smooth curves of the road. The distant glow of headlights creates a sense of motion and depth, evoking the allure of late-night travels and the quiet stories woven into the fabric of nighttime journeys.",
+        price: 30.99,
+        imageId: '/images/traffic-in-buenos-aires.jpeg',
+        category: 'lights'
+    },
+    'product28': {
+        id: '28',
+        title: "Branches of Hope",
+        description: "A breathtaking monochrome depiction of tree branches stretching gracefully into a bright light, their intricate silhouettes framed against the radiant backdrop. The delicate interplay of light and shadow enhances the textures of the bark and leaves, evoking a sense of renewal and the promise of growth as nature reaches toward the warmth of the sun.",
+        price: 25.99,
+        imageId: '/images/tree-silhouette.jpeg',
+        category: 'nature'
+    },
+    'product29': {
+        id: '29',
+        title: "Submerged Serenity",
+        description: "A captivating monochrome portrayal of a woman submerged underwater, her graceful form entwined in the fluidity of the surrounding depths. The soft ripples of light create a mesmerizing play of shadows and reflections, evoking a sense of tranquility and introspection as she becomes one with the water's embrace.",
+        price: 45.99,
+        imageId: '/images/underwater.jpg',
+        category: 'people'
+    },
+    'product30': {
+        id: '30',
+        title: "Cultivating Life",
+        description: "A poignant monochrome scene capturing a man laboring in a lush rice field, his silhouette framed against the vast expanse of greenery. The textures of the soil and the delicate rice plants are accentuated by the soft light, evoking a sense of dedication and the profound connection between humanity and the land, celebrating the art of cultivation and the rhythm of rural life.",
+        price: 40.99,
+        imageId: '/images/working.jpg',
+        category: 'people'
+    },
+}
+
+export default initialProducts;
