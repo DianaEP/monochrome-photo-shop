@@ -19,18 +19,18 @@ export default function MainNavigation() {
         <ul className={classes.list}>
           <div className={classes.pages}>
             <li>
-              <NavLink to='/'>Home</NavLink>
+              <NavLink to='/' className={({isActive}) => (isActive ? classes.active : undefined)} end>Home</NavLink>
             </li>
             <li>
-              <NavLink to='/products'>Products</NavLink>
+              <NavLink to='/products' className={({isActive}) => (isActive ? classes.active : undefined)}>Products</NavLink>
             </li>
           </div>
           <li>
-            <NavLink to='/cart'><FaCartArrowDown /></NavLink>  
+            <NavLink to='/cart' className={({isActive}) => (isActive ? classes.active : undefined)}><FaCartArrowDown /></NavLink>  
           </li>
         </ul>
         
-        <Button><NavLink to='/login'>Login</NavLink></Button>
+        <Button><NavLink to='/login' className={({isActive}) => (isActive ? classes.active : undefined)}>Login</NavLink></Button>
       </nav>
     </header>
   );

@@ -1,0 +1,30 @@
+.errorBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin: 4rem ;
+}
+
+.errorBlockIcon svg{
+    font-size: 4rem;
+    color: var(--color);
+}
+
+.errorBlockText{
+    text-align: center;
+}
+
+.errorBlockText p:first-of-type{
+   font-size: 1.5rem;
+   font-weight: bold;
+}
+
+.errorBlockText p:nth-of-type(2){
+    font-size: 1.2rem;
+ }
+
+.errorBlockText h2{
+   text-transform: uppercase;
+}

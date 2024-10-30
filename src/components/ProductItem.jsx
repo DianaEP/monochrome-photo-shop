@@ -7,7 +7,7 @@ export default function ProductItem({ product }) {
   return (
     <li  className={classes.card}>
       <div className={classes.image}>
-        <img src={product.imageId} alt="" />
+        <img src={product.imageUrl} alt="" />
       </div>
       <div className={classes.details}>
         <h3>{product.title}</h3>

@@ -1,6 +1,18 @@
+.productsPage h2{
+    font-family: var(--font-family-title);
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.productsPage p{
+    text-align: center;
+}
+
 .products{
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 1rem;
+    margin-top: 4rem;
 }
+

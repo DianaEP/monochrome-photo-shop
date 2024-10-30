@@ -7,6 +7,7 @@ import ProductsPage from './page-components/ProductsPage'
 import AuthPage from './page-components/AuthPage'
 import ProductPage from './page-components/ProductPage'
 import CartPage from './page-components/CartPage'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const router = createBrowserRouter([
   {
@@ -42,11 +43,15 @@ const router = createBrowserRouter([
   }
 ])
 
+const queryClient = new QueryClient();
+
 function App() {
   
 
   return (
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   )
 }
 
