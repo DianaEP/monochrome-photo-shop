@@ -1,11 +1,28 @@
 import { IoSearch } from "react-icons/io5";
+import Button from "../UI/Button";
+import classes from './Search.module.css'
+import { useState } from "react";
+import ProductItem from "./ProductItem";
 
-export default function Search(){
+export default function Search({searchTerm, setSearchTerm}){
+    
+    function handleInputChange(event){
+        setSearchTerm(event.target.value)
+    }
+
+
     return(
         <>
-            <div>
-                <IoSearch />
-                <input type="text" />
+            <div className={classes.search}>
+                <div className={classes.searchInput}>
+                    <IoSearch />
+                    <input 
+                        type="text" 
+                        value={searchTerm}
+                        onChange={handleInputChange}
+                        placeholder="Search products"/>
+                </div>
+                {/* <Button>Search</Button> */}
             </div>
         </>
     )

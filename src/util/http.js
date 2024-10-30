@@ -12,7 +12,7 @@ export async function fetchProducts(){
     }
     
     const productsData  = await response.json();
-    console.log(productsData);
+    // console.log('Fetched products data:', productsData); 
 
-    return productsData;
+    return productsData ;
 }
