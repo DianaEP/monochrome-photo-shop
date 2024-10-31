@@ -1,0 +1,19 @@
+.category{
+    border: 1px solid var(--color-border);
+    border-radius: 25px;
+    width: 11rem;
+    padding: 0 0.5rem;
+}
+
+
+/* .category select{
+    border: none;
+    outline: none;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.category select option{
+    background-color: var(--color-border);
+} */
