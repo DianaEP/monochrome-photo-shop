@@ -1,0 +1,11 @@
+.productList{
+    display: flex; 
+    align-items: center;
+    column-gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.productList img{
+    width: 5rem;
+    height: 6rem;
+}

@@ -1,0 +1,15 @@
+.cart{
+    display: flex;
+    flex-direction: column;
+}
+
+.productList{
+    display: flex;
+    align-items: center;
+}
+
+
+.total{
+    display: flex;
+    align-items: center;
+}

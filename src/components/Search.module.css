@@ -12,11 +12,16 @@
     padding: 0.5rem 1rem;
 }
 
+
 .searchInput input{
     border: none;
     outline: none;
     font-family: var(--font-family);
     font-size: 1rem;
+}
+
+.searchInput input::placeholder{
+    color: var(--color-border);
 }
 
 .searchInput svg{

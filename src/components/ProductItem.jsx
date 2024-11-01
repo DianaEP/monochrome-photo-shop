@@ -1,14 +1,19 @@
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import Button from "../UI/Button";
 import { currencyFormatter } from "../util/formatting";
 import classes from './ProductItem.module.css'
 
-export default function ProductItem({ product }) {
+export default function ProductItem({ product, handleAddProductToCart }) {
+  const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams()
 
   const isOnProducts = location.pathname === '/products';
   const isOnProduct = location.pathname === `/products/${id}`;
+
+  function handleDetailsNavigation(){
+    navigate(`/products/${product.id}`)
+  }
   
   return (
     <li  className={isOnProduct ? classes.cardOnProduct : classes.card}>
@@ -26,10 +31,18 @@ export default function ProductItem({ product }) {
               <p>{currencyFormatter.format(product.price)}</p>
             </div>
             {isOnProducts && (
-              <button className={classes.button}><NavLink to={`/products/${product.id}`}>Details</NavLink></button> 
+              <button 
+                className={classes.button}
+                onClick={handleDetailsNavigation}>
+                  Details
+              </button> 
             )}
             {isOnProduct && (
-              <button className={classes.button}><NavLink to={`/cart`}>Add to Cart</NavLink></button> 
+              <button 
+                className={classes.button} 
+                onClick={handleAddProductToCart}>
+                  Add to Cart
+              </button> 
             )}
         </div>
 

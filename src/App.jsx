@@ -6,8 +6,13 @@ import HomePage from './page-components/HomePage'
 import ProductsPage from './page-components/ProductsPage'
 import AuthPage from './page-components/AuthPage'
 import ProductPage from './page-components/ProductPage'
-import CartPage from './page-components/CartPage'
+import CheckoutPage from './page-components/CheckoutPage'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { CartContextProvider } from './store/CartContext'
+import { useState } from 'react'
+import MainNavigation from './components/MainNavigation'
+import Cart from './components/Cart'
+import { ModalContextActionsProvider } from './store/ModalContextActions'
 
 const router = createBrowserRouter([
   {
@@ -32,8 +37,8 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: 'cart',
-        element:<CartPage/>
+        path: 'checkout',
+        element:<CheckoutPage/>
       },
       {
         path: 'login',
@@ -46,12 +51,17 @@ const router = createBrowserRouter([
 const queryClient = new QueryClient();
 
 function App() {
-  
+ 
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <ModalContextActionsProvider>
+      <CartContextProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router}/>
+          <Cart/>
+        </QueryClientProvider>
+      </CartContextProvider>
+    </ModalContextActionsProvider>
   )
 }
 

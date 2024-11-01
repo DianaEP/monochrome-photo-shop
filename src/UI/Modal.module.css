@@ -1,0 +1,31 @@
+.modalBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #262626c5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modalContent {
+    background: var(--color-background2);
+    box-shadow: 0px 0px 5px var(--color-background);
+    padding: 3rem;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    cursor: pointer;
+  }
