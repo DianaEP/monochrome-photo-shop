@@ -1,6 +1,18 @@
 .cart{
     display: flex;
     flex-direction: column;
+    padding: 1rem;
+}
+
+.cart h2{
+    font-family: var(--font-family-title);
+    font-size: 2rem;
+}
+
+.cartContent{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
 }
 
 .productList{
@@ -11,5 +23,25 @@
 
 .total{
     display: flex;
+    justify-content: flex-end;
     align-items: center;
+
+}
+
+.total span{
+    margin-right: 0.5rem;
+    font-weight: 600;
+}
+
+.total p{
+    font-weight: 500;
+    border-bottom: 2px solid var(--color);
+}
+
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 1rem;
+    align-items: center;
+    margin-top: 1rem;
 }

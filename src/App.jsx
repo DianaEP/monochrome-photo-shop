@@ -1,5 +1,5 @@
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, useNavigate } from 'react-router-dom'
 import './App.css'
 import RootLayout from './page-components/RootLayout'
 import HomePage from './page-components/HomePage'
@@ -13,6 +13,7 @@ import { useState } from 'react'
 import MainNavigation from './components/MainNavigation'
 import Cart from './components/Cart'
 import { ModalContextActionsProvider } from './store/ModalContextActions'
+
 
 const router = createBrowserRouter([
   {
@@ -43,12 +44,15 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element:<AuthPage/>
-      }
+      },
+     
     ]
   }
 ])
 
 const queryClient = new QueryClient();
+
+
 
 function App() {
  

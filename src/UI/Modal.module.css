@@ -1,31 +1,67 @@
 .modalBackground {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #262626c5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .modalContent {
-    background: var(--color-background2);
-    box-shadow: 0px 0px 5px var(--color-background);
-    padding: 3rem;
-    border-radius: 5px;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-  }
-  
-  .closeButton {
-    position: absolute;
-    top: 12px;
-    right: 15px;
-    font-size: 1.5rem;
-    color: var(--color-text);
-    cursor: pointer;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #262626c5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: var(--color-background2);
+  box-shadow: 0px 0px 5px var(--color-background);
+  padding: 3rem;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.closeButton:hover{
+    color: var(--color-border-hover);
+}
+
+.modalChildren {
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+/* For WebKit browsers (Chrome, Safari) */
+.modalChildren::-webkit-scrollbar {
+  width: 2px;
+}
+
+.modalChildren::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modalChildren::-webkit-scrollbar-thumb {
+  background: var(--color-background);
+  border-radius: 2px;
+}
+
+.modalChildren::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}
+
+/* For Firefox */
+.modalBody {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-background);
+}

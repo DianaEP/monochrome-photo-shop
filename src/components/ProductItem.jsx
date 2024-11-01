@@ -31,18 +31,16 @@ export default function ProductItem({ product, handleAddProductToCart }) {
               <p>{currencyFormatter.format(product.price)}</p>
             </div>
             {isOnProducts && (
-              <button 
-                className={classes.button}
+              <Button 
                 onClick={handleDetailsNavigation}>
                   Details
-              </button> 
+              </Button> 
             )}
             {isOnProduct && (
-              <button 
-                className={classes.button} 
+              <Button 
                 onClick={handleAddProductToCart}>
                   Add to Cart
-              </button> 
+              </Button> 
             )}
         </div>
 

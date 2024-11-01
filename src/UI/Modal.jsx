@@ -10,7 +10,9 @@ export default function Modal({children,open, onClose}){
         <div className={classes.modalBackground} onClick={onClose}>
             <div className={classes.modalContent} onClick={(e)=>e.stopPropagation()}>
                 <span className={classes.closeButton} onClick={onClose}><IoClose /></span>
-                {children}
+                <div className={classes.modalChildren}>
+                    {children}
+                </div>
             </div>
         </div>,
         document.getElementById('modal')
