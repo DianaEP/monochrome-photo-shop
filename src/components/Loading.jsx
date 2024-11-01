@@ -1,7 +1,9 @@
-export default function Loading(){
+import classes from './Loading.module.css'
+
+export default function Loading({message}){
     return(
-        <div className={classes}>
-            <p></p>
+        <div className={classes.loading}>
+            <p>{message}</p>
         </div>
     )
 }

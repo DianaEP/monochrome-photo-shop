@@ -4,6 +4,7 @@ import classes from './ProductPage.module.css'
 import { useQuery } from '@tanstack/react-query';
 import { fetchProduct } from '../util/http';
 import ErrorBlock from '../components/ErrorBlock';
+import Loading from '../components/Loading';
 
 export default function ProductPage(){
     const { id }= useParams();
@@ -15,7 +16,7 @@ export default function ProductPage(){
     console.log(data);
     
     if (isLoading) {
-        return <p>Loading...</p>;
+        return <Loading message='Loading product...' />;
     }
 
     if (isError) {
@@ -24,7 +25,8 @@ export default function ProductPage(){
     
     return(
         <>
-            <div>
+            <div className={classes.productPage}>
+                <h2>Image & Story: Discover the Details</h2>
                 <ProductItem product={data} />
             </div>
         </>

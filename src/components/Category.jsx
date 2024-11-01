@@ -21,24 +21,24 @@ const customStyle = {
         border: 'none',
         boxShadow: 'none',
         color: '#262626',
-        outline: 'none', // Remove outline
+        outline: 'none',
         '&:hover': {
-            border: 'none', // Ensure no border on hover
+            border: 'none', 
         },
         '&:focus': {
             outline: 'none',
-            boxShadow: 'none', // Ensure no outline on focus
+            boxShadow: 'none', 
         },
     }),
     menu: (provided) => ({
         ...provided,
-        borderRadius: '5px', // Rounded corners
+        borderRadius: '5px', 
         padding: '5px',
         boxShadow: '0px 0px 5px #595959'
     }),
     menuList: (base) => ({
         ...base,
-        maxHeight: '200px', // Set maximum height to enable scrolling
+        maxHeight: '200px', 
         overflowY: 'auto',
         '::-webkit-scrollbar' :{
             width: '3px',
