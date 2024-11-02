@@ -1,0 +1,38 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    margin-top: 1rem;
+    
+}
+
+.container label{
+    font-size: 0.9rem;
+
+    color: var(--color-text);
+} 
+
+.container input{
+    background-color: transparent;
+    border: none;
+    /* background-color: var(--color-background); */
+    box-shadow: inset 0px 0px 5px var(--color-border);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border-radius: 25px;
+    outline: none;
+}
+
+.width{
+    width: 5rem;
+}
+
+.container .errorInput{
+    box-shadow: inset 0px 0px 5px var(--color);
+}
+
+.container .errorInputMultiple{
+    box-shadow: inset 0px 0px 5px var(--color);
+    width: 5rem;
+}

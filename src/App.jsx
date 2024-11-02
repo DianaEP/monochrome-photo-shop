@@ -62,7 +62,6 @@ function App() {
       <CartContextProvider>
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router}/>
-          <Cart/>
         </QueryClientProvider>
       </CartContextProvider>
     </ModalContextActionsProvider>
