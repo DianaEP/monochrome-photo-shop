@@ -5,7 +5,7 @@ import Button from "../UI/Button";
 import validation from "../util/validation";
 import { useNavigate } from "react-router-dom";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({onOrderSubmit}) {
   const navigate = useNavigate();
   const [checkout, setCheckout] = useState({
     fullName: "",
@@ -51,6 +51,7 @@ export default function CheckoutForm() {
       return;
     }
     console.log("submitted");
+    onOrderSubmit(checkout); //submit function
     setCheckout({
       fullName: "",
       email: "",
@@ -62,7 +63,7 @@ export default function CheckoutForm() {
       expiryDate: "",
       cvv: "",
     });
-    navigate("/");
+   
   }
 
   return (
@@ -206,7 +207,7 @@ export default function CheckoutForm() {
       </div>
 
       <div className={classes.buttonsCheckout}>
-        <Button textOnly type="button" onClick={() => navigate("/")}>
+        <Button textOnly type="button" onClick={() => navigate("/products")}>
           Cancel
         </Button>
         <Button type="submit">Submit Order</Button>

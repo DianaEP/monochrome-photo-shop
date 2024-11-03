@@ -35,3 +35,24 @@ export async function fetchProduct(id){
     return productData ;
 }
 
+export async function postOrders(orderData){
+    const response =  await fetch(`${firebaseConfig.databaseURL}/orders.json`,{
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData)
+    })
+
+    if(!response.ok){
+        const errorText = await response.text();
+        const error = new Error('An error occurred while posting the error');
+        error.code = response.status;
+        error.info = errorText;
+        throw error;
+    }
+
+    const order = await response.json();
+
+    return order;
+}

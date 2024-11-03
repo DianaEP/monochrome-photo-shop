@@ -53,6 +53,13 @@ function cartReducer(state,action){
         }
     }
 
+    if(action.type === 'CLEAR_CART'){
+        return{
+            ...state,
+            products: []
+        }
+    }
+
     return state;
 }
 
@@ -73,10 +80,17 @@ export function CartContextProvider({children}){
         })
     }
 
+    function clearCart(){
+        dispatchCartAction({
+            type: 'CLEAR_CART',
+        })
+    }
+
     const cartContext = {
         products: cartState.products,
         addProduct,
-        removeProduct
+        removeProduct,
+        clearCart
 
     }
 

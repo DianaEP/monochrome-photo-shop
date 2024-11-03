@@ -13,6 +13,7 @@ import { useState } from 'react'
 import MainNavigation from './components/MainNavigation'
 import Cart from './components/Cart'
 import { ModalContextActionsProvider } from './store/ModalContextActions'
+import ConfirmationPage from './page-components/ConfirmationPage'
 
 
 const router = createBrowserRouter([
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: 'checkout',
         element:<CheckoutPage/>
+      },
+      {
+        path: 'confirmation',
+        element:<ConfirmationPage/>
       },
       {
         path: 'login',
