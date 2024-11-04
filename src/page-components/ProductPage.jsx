@@ -16,7 +16,7 @@ export default function ProductPage(){
         queryFn: () => fetchProduct(id)
     })
 
-    console.log(data);
+    // console.log(data);
     
     if (isLoading) {
         return <Loading message='Loading product...' />;

@@ -51,7 +51,7 @@ export default function MainNavigation() {
           </li>
         </ul>
         
-        <Button><NavLink to='/login' className={({isActive}) => (isActive ? classes.active : undefined)}>Login</NavLink></Button>
+        <Button><NavLink to='/auth' className={({isActive}) => (isActive ? classes.active : undefined)}>Login</NavLink></Button>
       </nav>
     </header>
   );

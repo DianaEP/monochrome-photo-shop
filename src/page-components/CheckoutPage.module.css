@@ -6,7 +6,7 @@
     align-items: center;
     border-radius: 5px;
     margin: 4rem auto;
-    box-shadow: 0px 0px 5px var(--color-border);
+    box-shadow: var(--shadow);
     /* background-color: var(--color-background2); */
     overflow: hidden;
 }
@@ -33,7 +33,7 @@
 .productList img{
     width: 5rem;
     height:  5rem;
-    box-shadow: 0px 0px 5px var(--color-border);
+    box-shadow: var(--shadow);
     object-fit: cover;
     border-radius: 50%;
     
@@ -55,7 +55,7 @@
 .priceTotal p{
     font-weight: 600;
     font-size: 1.1rem;
-    border-bottom: 2px solid var(--color);
+    border-bottom: var(--border-bottom-line);
 }
 .checkoutForm{
     display: flex;

@@ -4,65 +4,48 @@ import Input from "../UI/Input";
 import Button from "../UI/Button";
 import validation from "../util/validation";
 import { useNavigate } from "react-router-dom";
+import useFormValidation from "../hooks/useFormValidation";
+
+const initialCheckoutData = {
+  fullName: "",
+  email: "",
+  street: "",
+  number: "",
+  location: "",
+  cardholderName: "",
+  cardNumber: "",
+  expiryDate: "",
+  cvv: "",
+}
 
 export default function CheckoutForm({onOrderSubmit}) {
+  const{formData, setFormData, errors, validateOnSubmit, handleChange}  = useFormValidation(initialCheckoutData, 'checkout', customHandleChange)
   const navigate = useNavigate();
-  const [checkout, setCheckout] = useState({
-    fullName: "",
-    email: "",
-    street: "",
-    number: "",
-    location: "",
-    cardholderName: "",
-    cardNumber: "",
-    expiryDate: "",
-    cvv: "",
-  });
-  const [errors, setErrors] = useState({});
 
-  function handleChange(event) {
-    const { name, value } = event.target;
-
-    setErrors((prevErrors) => ({
-        ...prevErrors,
-        [name]: '', // Reset the error for the current input field
-    }));
-
+  function customHandleChange(name, value, setFormData){
     if (name === "cardNumber") {
       const cleanedValue = value.replace(/\D/g, ""); // Remove all non-digit characters
       const formattedValue = cleanedValue.replace(/(\d{4})(?=\d)/g, "$1 "); // Format to include spaces every four digits
-      setCheckout((prevValue) => ({
+      setFormData((prevValue) => ({
         ...prevValue,
         [name]: formattedValue.trim(), // Trim in case there are trailing spaces
       }));
-    } else {
-      setCheckout((prevValue) => ({
-        ...prevValue,
+    }else{
+      setFormData((prevData) => ({
+        ...prevData,
         [name]: value,
-      }));
+    }));
     }
   }
-
+  
   function handleSubmit(e) {
     e.preventDefault();
-    const validateErrors = validation(checkout);
-    if (Object.keys(validateErrors).length > 0) {
-      setErrors(validateErrors);
-      return;
+    if(validateOnSubmit()){
+      console.log("submitted");
+      onOrderSubmit(formData); //submit function
+      setFormData(initialCheckoutData);
     }
-    console.log("submitted");
-    onOrderSubmit(checkout); //submit function
-    setCheckout({
-      fullName: "",
-      email: "",
-      street: "",
-      number: "",
-      location: "",
-      cardholderName: "",
-      cardNumber: "",
-      expiryDate: "",
-      cvv: "",
-    });
+    
    
   }
 
@@ -77,7 +60,7 @@ export default function CheckoutForm({onOrderSubmit}) {
             id="fullName"
             name="fullName"
             className={errors.fullName ? 'errorInput' : ''}
-            value={checkout.fullName}
+            value={formData.fullName}
             onChange={handleChange}
           />
           {errors.fullName && (
@@ -90,7 +73,7 @@ export default function CheckoutForm({onOrderSubmit}) {
             id="email"
             name="email"
             className={errors.email ? 'errorInput' : ''}
-            value={checkout.email}
+            value={formData.email}
             onChange={handleChange}
           />
           {errors.email && (
@@ -103,7 +86,7 @@ export default function CheckoutForm({onOrderSubmit}) {
             id="street"
             name="street"
             className={errors.street ? 'errorInput' : ''}
-            value={checkout.street}
+            value={formData.street}
             onChange={handleChange}
           />
           {errors.street && (
@@ -119,7 +102,7 @@ export default function CheckoutForm({onOrderSubmit}) {
                 name="number"
                 // className='width'
                 className={`${errors.number ? 'errorInputMultiple' : 'width'}`}
-                value={checkout.number}
+                value={formData.number}
                 onChange={handleChange}
               />
               {errors.number && (
@@ -134,7 +117,7 @@ export default function CheckoutForm({onOrderSubmit}) {
                 id="location"
                 name="location"
                 className={errors.location ? 'errorInput' : ''}
-                value={checkout.location}
+                value={formData.location}
                 onChange={handleChange}
               />
               {errors.location && (
@@ -152,7 +135,7 @@ export default function CheckoutForm({onOrderSubmit}) {
             id="cardholderName"
             name="cardholderName"
             className={errors.cardholderName ? 'errorInput' : ''}
-            value={checkout.cardholderName}
+            value={formData.cardholderName}
             onChange={handleChange}
           />
           {errors.cardholderName && (
@@ -164,7 +147,7 @@ export default function CheckoutForm({onOrderSubmit}) {
             id="cardNumber"
             name="cardNumber"
             className={errors.cardNumber ? 'errorInput' : ''}
-            value={checkout.cardNumber}
+            value={formData.cardNumber}
             onChange={handleChange}
           />
           {errors.cardNumber && (
@@ -180,7 +163,7 @@ export default function CheckoutForm({onOrderSubmit}) {
                 name="expiryDate"
                 // className="width"
                 className={`${errors.expiryDate ? 'errorInputMultiple' : 'width'}`}
-                value={checkout.expiryDate}
+                value={formData.expiryDate}
                 onChange={handleChange}
               />
               {errors.expiryDate && (
@@ -195,7 +178,7 @@ export default function CheckoutForm({onOrderSubmit}) {
                 name="cvv"
                 // className="width"
                 className={`${errors.cvv ? 'errorInputMultiple' : 'width'}`}
-                value={checkout.cvv}
+                value={formData.cvv}
                 onChange={handleChange}
               />
               {errors.cvv && (

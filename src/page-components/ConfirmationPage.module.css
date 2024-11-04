@@ -7,7 +7,7 @@
 }
 
 .noOrder p{
-    border-bottom: 1px solid var(--color);
+    border-bottom: var(--border-bottom-line);
     padding-bottom: 0.5rem;
     font-size: 1.2rem;
 }
@@ -17,4 +17,66 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 4rem;
+}
+
+.confirmationPage h1{
+    font-family: var(--font-family-title);
+
+}
+
+.details, 
+.customerDetails, 
+.orderDetails, 
+.orderDetails ul, 
+.shipping{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details{ 
+    row-gap: 1.5rem;
+}
+
+.success{
+    font-size: 1.2rem;
+    border-bottom: var(--border-bottom-line);
+    padding-bottom: 0.5rem;
+}
+
+.customerDetails{
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    padding: 0.5rem 2rem;
+}
+
+.orderDetails{
+    
+}
+
+.orderDetails ul{
+    line-height: 1.5rem;
+}
+
+.shipping p{
+   margin: 0;
+   padding-bottom: 1rem;  
+}
+
+.shipping p:first-of-type{
+    font-weight: 500;
+}
+
+.shipping span svg{
+    font-size: 2rem;
+    color: var(--color-border);
+}
+
+
+
+
+
+.totalAmount{
+    font-weight: 600;
 }

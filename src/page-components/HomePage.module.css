@@ -70,18 +70,56 @@
 @media(max-width: 1390px){
     .title{
         width: 30rem;
-        position: absolute;
         top: 7rem;
         left: 1rem;
-        text-transform: uppercase;
         line-height: 6rem;
         font-size: 4rem;
-        font-family: var(--font-family-title);
-        text-align: center;
     }
 
     .button{
-        bottom: 10rem;
+        bottom: 7rem;
         left: -4rem;
     }
 }
+
+@media(max-width: 1180px){
+    .title{
+        width: 25rem;
+        line-height: 4rem;
+        font-size: 3rem;
+    }
+
+    .button{
+        left: -7rem;
+    }
+}
+
+@media(max-width: 1180px){
+    .title{
+        width: 20rem;
+        top: 8rem;
+        left: 3rem;
+        font-size: 2.5rem;
+    }
+
+    .button{
+        bottom: 5rem;
+    }
+}
+
+@media(max-width: 940px){
+    .title{
+        width: 15rem;
+        top: 7rem;
+        left: 4rem;
+        line-height: 4rem;
+        font-size: 2rem;
+    }
+
+    .button{
+        bottom: 5rem;
+        left: -8.6rem;
+    
+    }
+}
+
