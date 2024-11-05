@@ -81,6 +81,10 @@ export default function validation(data,formType){
             errors.confirmPassword = "Confirm Password is required";
         }
 
+        if(data.password !== data.confirmPassword){
+            errors.confirmPassword = "Password don't match"
+        }
+
         if(!data.firstName.trim()){
             errors.firstName = "First Name is required"
         }

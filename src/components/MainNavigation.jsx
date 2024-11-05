@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { MdCamera } from "react-icons/md";
 import { FaCartArrowDown } from "react-icons/fa6";
 import logo from '../assets/logo/logo-dark.svg'
@@ -8,12 +8,18 @@ import { RiShoppingCartLine } from "react-icons/ri";
 import { useContext } from "react";
 import CartContext from "../store/CartContext";
 import ModalContextActions from "../store/ModalContextActions";
+import AuthContext from "../store/AuthContext";
 
 export default function MainNavigation() {
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
   const cartContext = useContext(CartContext);
   const modalContext = useContext(ModalContextActions);
+  const{ handleLogout, isLoggedIn } = useContext(AuthContext);
+
+  console.log(isLoggedIn);
+  
 
   const totalCartProducts = cartContext.products.reduce((totalNrOfProducts,product)=>{
     return totalNrOfProducts + product.quantity;
@@ -23,6 +29,10 @@ export default function MainNavigation() {
     modalContext.showCart();
   }
 
+  function handleUserLogout(){
+    handleLogout();
+    navigate("/auth");
+  }
   return (
     <header className={`${classes.header} ${isHomePage? classes.homePage : classes.notHomePage}`}>
       <div className={classes.logo}>
@@ -50,8 +60,11 @@ export default function MainNavigation() {
             </div>
           </li>
         </ul>
-        
-        <Button><NavLink to='/auth' className={({isActive}) => (isActive ? classes.active : undefined)}>Login</NavLink></Button>
+        {isLoggedIn ? (
+          <Button onClick={handleUserLogout}>Logout</Button>
+        ) : (
+          <Button><NavLink to='/auth' className={({isActive}) => (isActive ? classes.active : undefined)}>Login</NavLink></Button>
+        )}
       </nav>
     </header>
   );

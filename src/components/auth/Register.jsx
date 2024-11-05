@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import classes from "./Auth.module.css";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button";
 import validation from "../../util/validation";
 import useFormValidation from "../../hooks/useFormValidation";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../../store/AuthContext";
+import Loading from "../Loading";
+import ErrorBlock from "../ErrorBlock";
 
 const registerInput = [
   { type: "text", label: "First Name", id: "firstName", name: "firstName" },
@@ -22,21 +26,37 @@ const initialRegisterData = {
   };
 
 export default function Register() {
-  const{formData, setFormData, errors, handleChange, validateOnSubmit} = useFormValidation(initialRegisterData, 'register')
+  const navigate = useNavigate();
+  const{formData, setFormData, errors, handleChange, validateOnSubmit} = useFormValidation(initialRegisterData, 'register');
+
+  const{mutateRegister, isLoadingRegister, isErrorRegister, errorRegister} = useContext(AuthContext);
+
+  if(isLoadingRegister){
+    return <Loading message='Loading Login...'/>
+  }
+
+  if(isErrorRegister){
+    return <ErrorBlock title={errorRegister.info} message={errorRegister.message} status={errorRegister.code} />
+  }
+  
   
   function handleSubmit(e) {
     e.preventDefault();
     if(validateOnSubmit()){
-        console.log(formData);
+        const{confirmPassword, ...registerData} = formData;
+
+        console.log(registerData);
+        mutateRegister(registerData);
         setFormData(initialRegisterData);
+        navigate("/");
 
     }
     
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={classes.authRegister}>
       {registerInput.map((input) => (
-        <div key={input.id}>
+        <div key={input.id} className={classes.formAuth}>
           <Input
             type={input.type}
             label={input.label}
@@ -51,7 +71,10 @@ export default function Register() {
         </div>
       ))}
 
-      <Button>Register</Button>
+      <div className={classes.registerButton}>
+        <Button>Register</Button>
+      </div>
+
     </form>
   );
 }

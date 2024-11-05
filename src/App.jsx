@@ -14,6 +14,8 @@ import MainNavigation from './components/MainNavigation'
 import Cart from './components/Cart'
 import { ModalContextActionsProvider } from './store/ModalContextActions'
 import ConfirmationPage from './page-components/ConfirmationPage'
+import { AuthContextProvider } from './store/AuthContext'
+import ProtectedRoute from './util/ProtectedRoute'
 
 
 const router = createBrowserRouter([
@@ -34,17 +36,17 @@ const router = createBrowserRouter([
           },
           {
             path:':id',
-            element: <ProductPage/>
+            element: <ProtectedRoute><ProductPage/></ProtectedRoute> 
           }
         ]
       },
       {
         path: 'checkout',
-        element:<CheckoutPage/>
+        element: <ProtectedRoute><CheckoutPage/></ProtectedRoute>
       },
       {
         path: 'confirmation',
-        element:<ConfirmationPage/>
+        element: <ProtectedRoute><ConfirmationPage/></ProtectedRoute>
       },
       {
         path: 'auth',
@@ -63,13 +65,15 @@ function App() {
  
 
   return (
-    <ModalContextActionsProvider>
-      <CartContextProvider>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router}/>
-        </QueryClientProvider>
-      </CartContextProvider>
-    </ModalContextActionsProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthContextProvider>
+        <ModalContextActionsProvider>
+          <CartContextProvider>
+            <RouterProvider router={router}/>
+          </CartContextProvider>
+        </ModalContextActionsProvider>
+      </AuthContextProvider>
+    </QueryClientProvider>
   )
 }
 

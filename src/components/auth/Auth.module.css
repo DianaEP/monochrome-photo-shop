@@ -3,3 +3,24 @@
     font-size: 0.7rem;
     padding-left: 0.5rem;
 }
+
+.authLogin, .authRegister{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.authLogin{
+    row-gap: 2rem;
+}
+
+.formAuth{
+    width: 40%;
+
+}
+
+.registerButton{
+    margin-top: 2rem;
+}

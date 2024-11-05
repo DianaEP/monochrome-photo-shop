@@ -15,7 +15,7 @@ export default function ProductPage(){
         queryKey: ['product', id],
         queryFn: () => fetchProduct(id)
     })
-
+    console.log("ProductPage rendered");
     // console.log(data);
     
     if (isLoading) {
