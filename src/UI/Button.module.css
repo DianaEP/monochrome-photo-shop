@@ -6,7 +6,7 @@
     background-color: transparent;
     padding: 0.4rem 1rem;
     cursor: pointer;
-    transition: 0.2s;
+    /* transition: 0.2s; */
 }
 
 .button:hover{
@@ -22,7 +22,7 @@
     border: none;
     cursor: pointer;
     padding: 0.4rem 1rem;
-    transition: 0.2s;
+    /* transition: 0.2s; */
 }
 
 .buttonText:hover{

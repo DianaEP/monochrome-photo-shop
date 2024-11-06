@@ -2,8 +2,14 @@ import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import Button from "../UI/Button";
 import { currencyFormatter } from "../util/formatting";
 import classes from './ProductItem.module.css'
+import { motion } from "framer-motion";
 
-export default function ProductItem({ product, handleAddProductToCart }) {
+const productPageAnimation = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
+};
+
+export default function ProductItem({ product, handleAddProductToCart, productOnProducts }) {
   const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams()
@@ -14,9 +20,14 @@ export default function ProductItem({ product, handleAddProductToCart }) {
   function handleDetailsNavigation(){
     navigate(`/products/${product.id}`)
   }
-  
+
+ 
   return (
-    <li  className={isOnProduct ? classes.cardOnProduct : classes.card}>
+    <motion.li  
+      className={isOnProduct ? classes.cardOnProduct : classes.card}
+      variants={isOnProducts? productOnProducts : null}
+     
+    >
       <div className={isOnProduct? classes.imageOnProduct : classes.image}>
         <img className={classes.img} src={product.imageUrl} alt={product.title} />
       </div>
@@ -51,7 +62,7 @@ export default function ProductItem({ product, handleAddProductToCart }) {
           </span>
         </div>)}
       </div>
-    </li>
+    </motion.li>
   );
 }
 

@@ -7,7 +7,23 @@ import ErrorBlock from "../components/ErrorBlock";
 import { useEffect, useState } from "react";
 import Category from "../components/Category";
 import Loading from "../components/Loading";
+import { motion } from "framer-motion";
 
+
+const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  }
+  
+  const productOnProducts = {
+    hidden: { opacity: 0, scale: 0.95, rotate: 10},
+    show: { opacity: 1, scale: 1, rotate: 0, transition: { type: 'spring', stiffness: 100, duration: 0.5 } }
+  }
 
 export default function ProductsPage(){
     const { data, isLoading, isError, error} = useQuery({
@@ -30,6 +46,11 @@ export default function ProductsPage(){
         return searchedProducts && selectedProducts;
     })
 
+    console.log(filteredProducts);
+    
+
+   
+
     return(
         <>
             <div className={classes.productsPage}>
@@ -44,15 +65,20 @@ export default function ProductsPage(){
                 {isError && 
                     <ErrorBlock title={error.info} status={error.code} message={error.message}/>
                 }
-                <ul className={classes.products}>
+                <motion.ul 
+                    className={classes.products}
+                    variants={container}
+                    initial="hidden"
+                    animate={filteredProducts.length > 0 ? "show" : "hidden"}  
+                >
                     {!isLoading && !isError && filteredProducts.length === 0 && (
                         <p className={classes.noProduct}>No products found</p>
                     )}
                     {filteredProducts.length > 0 && (
                         filteredProducts.map((product)=>(
-                            <ProductItem key={product.id} product={product} />
+                            <ProductItem key={product.id} product={product} productOnProducts={productOnProducts}/>
                     )))}
-                </ul>
+                </motion.ul>
             </div>
         </>
     )

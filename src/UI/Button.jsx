@@ -1,14 +1,20 @@
-import { useLocation } from "react-router-dom";
 import classes from "./Button.module.css";
+import { motion } from "framer-motion";
 
 export default function Button({ children, onClick, textOnly, ...props }) {
   return (
-    <button
+    <motion.button
+      whileHover={{
+        scale: 1.1, 
+        transition: {
+          type: 'spring', 
+          stiffness: 500
+        }}}
       onClick={onClick}
       className={textOnly ? classes.buttonText : classes.button}
       {...props}
     >
       {children}
-    </button>
+    </motion.button>
   );
 }

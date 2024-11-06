@@ -16,7 +16,7 @@ const initialLoginData = {
 
 export default function Login() {
   const navigate = useNavigate();
-  const{formData, setFormData, errors, validateOnSubmit, handleChange}  = useFormValidation(initialLoginData, 'login')
+  const{formData, setFormData, errors, validateOnSubmit, handleChange, scope}  = useFormValidation(initialLoginData, 'login')
 
   const{mutateLogin, isLoadingLogin, isErrorLogin, errorLogin} = useContext(AuthContext);
 
@@ -38,7 +38,7 @@ export default function Login() {
     }  
   }
   return (
-    <form onSubmit={handleSubmit} className={classes.authLogin}>
+    <form onSubmit={handleSubmit} className={classes.authLogin} ref={scope}>
       <div className={classes.formAuth}>
         <Input
           type="email"
@@ -47,6 +47,7 @@ export default function Login() {
           onChange={handleChange}
           value={formData.email}
           name="email"
+          className={errors.email ? 'errorInput' : ''}
         />
         {errors.email && <span className={classes.error}>{errors.email}</span>}
         <Input
@@ -56,6 +57,7 @@ export default function Login() {
           onChange={handleChange}
           value={formData.password}
           name="password"
+          className={errors.password ? 'errorInput' : ''}
         />
         {errors.password && (
           <span className={classes.error}>{errors.password}</span>

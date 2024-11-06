@@ -10,6 +10,7 @@ import { useMutation } from "@tanstack/react-query";
 import { postOrders } from "../util/http";
 import Loading from "../components/Loading";
 import ErrorBlock from "../components/ErrorBlock";
+import { animate, AnimatePresence, motion } from "framer-motion";
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
@@ -62,19 +63,48 @@ export default function CheckoutPage() {
     )
   }
 
+  
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  }
+  
+  const checkoutProducts = {
+    hidden: { opacity: 0, scale: 0.5},
+    show: { opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 100, duration: 0.5 } }
+  }
+
   return (
     <>
       <div className={classes.checkoutPage}>
         <h2>Checkout</h2>
         <div>
-          <ul className={classes.productList}>
+
+          <motion.ul 
+            className={classes.productList}
+            variants={container}
+            initial="hidden"
+            animate="show"  
+          >
             {cartContext.products.map((product) => (
-              <li key={product.id}>
+              <li 
+                key={product.id}
+              >
                 <span>{product.quantity}x</span>
-                <img src={product.imageUrl} alt={product.tile} />
+                <motion.img 
+                  src={product.imageUrl} 
+                  alt={product.title}
+                  variants={checkoutProducts}
+                   />
               </li>
             ))}
-          </ul>
+          </motion.ul>
           <div className={classes.priceTotal}>
             <span>Total amount: </span>
             <p>{currencyFormatter.format(cartTotal)}</p>

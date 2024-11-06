@@ -5,6 +5,7 @@ import Button from "../UI/Button";
 import validation from "../util/validation";
 import { useNavigate } from "react-router-dom";
 import useFormValidation from "../hooks/useFormValidation";
+import { useAnimate } from "framer-motion";
 
 const initialCheckoutData = {
   fullName: "",
@@ -19,7 +20,7 @@ const initialCheckoutData = {
 }
 
 export default function CheckoutForm({onOrderSubmit}) {
-  const{formData, setFormData, errors, validateOnSubmit, handleChange}  = useFormValidation(initialCheckoutData, 'checkout', customHandleChange)
+  const{formData, setFormData, errors, validateOnSubmit, handleChange, scope}  = useFormValidation(initialCheckoutData, 'checkout', customHandleChange)
   const navigate = useNavigate();
 
   function customHandleChange(name, value, setFormData){
@@ -44,13 +45,11 @@ export default function CheckoutForm({onOrderSubmit}) {
       console.log("submitted");
       onOrderSubmit(formData); //submit function
       setFormData(initialCheckoutData);
-    }
-    
-   
+    } 
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} ref={scope}>
       <div className={classes.form}>
         <div className={classes.userDetails}>
           <p>Your details</p>

@@ -27,7 +27,7 @@ const initialRegisterData = {
 
 export default function Register() {
   const navigate = useNavigate();
-  const{formData, setFormData, errors, handleChange, validateOnSubmit} = useFormValidation(initialRegisterData, 'register');
+  const{formData, setFormData, errors, handleChange, validateOnSubmit, scope} = useFormValidation(initialRegisterData, 'register');
 
   const{mutateRegister, isLoadingRegister, isErrorRegister, errorRegister} = useContext(AuthContext);
 
@@ -54,7 +54,7 @@ export default function Register() {
     
   }
   return (
-    <form onSubmit={handleSubmit} className={classes.authRegister}>
+    <form onSubmit={handleSubmit} className={classes.authRegister} ref={scope}>
       {registerInput.map((input) => (
         <div key={input.id} className={classes.formAuth}>
           <Input
@@ -64,6 +64,7 @@ export default function Register() {
             name={input.name}
             onChange={handleChange}
             value={formData[input.name]}
+            className={errors[input.name] ? 'errorInput' : ''}
           />
           {errors[input.name] && (
             <span className={classes.error}>{errors[input.name]}</span>
