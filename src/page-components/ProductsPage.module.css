@@ -1,11 +1,14 @@
 .productsPage h2{
     font-family: var(--font-family-title);
-    margin-top: 4rem;
+    font-size: 2rem;
+    margin-top: 5rem;
     text-align: center;
 }
 
 .description{
-    padding: 0 10rem;
+    padding: 0 20rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
     text-align: center;
 }
 

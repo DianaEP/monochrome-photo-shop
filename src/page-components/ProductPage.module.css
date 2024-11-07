@@ -1,5 +1,6 @@
 .productPage h2{
     text-align: center;
+    font-size: 2rem;
     font-family: var(--font-family-title);
     margin-top: 4rem;
 }

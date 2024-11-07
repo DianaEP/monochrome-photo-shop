@@ -1,7 +1,7 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { MdCamera } from "react-icons/md";
 import { FaCartArrowDown } from "react-icons/fa6";
-import logo from '../assets/logo/logo-dark.svg'
+import logo from '../assets/logo/mountain-logo.svg'
 import classes from './MainNavigation.module.css'
 import Button from "../UI/Button";
 import { RiShoppingCartLine } from "react-icons/ri";

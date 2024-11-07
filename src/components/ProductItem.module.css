@@ -35,8 +35,8 @@
 }
 
 .title{
-  text-transform: uppercase;
   font-family: var(--font-family-title);
+  font-size: 1.4rem;
     
 }
 
@@ -85,6 +85,7 @@
 
 .detailsOnProduct p{
     width: 90%;
+    text-align: justify;
     line-height: 1.5rem;
 }
 
