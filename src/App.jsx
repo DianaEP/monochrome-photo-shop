@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element:<ProductsPage/>
+            element:<ProtectedRoute><ProductsPage/></ProtectedRoute>
           },
           {
             path:':id',

@@ -31,6 +31,7 @@ export default function MainNavigation() {
 
   function handleUserLogout(){
     handleLogout();
+    cartContext.clearCart();
     navigate("/auth");
   }
   return (

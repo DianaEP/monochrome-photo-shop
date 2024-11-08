@@ -1,8 +1,8 @@
 import firebaseConfig from "../firebaseConfig";
 
 export async function fetchProducts(){
-    
-    const response = await fetch(`${firebaseConfig.databaseURL}/products.json`);
+    const idToken =  localStorage.getItem('authToken');
+    const response = await fetch(`${firebaseConfig.databaseURL}/products.json?auth=${idToken}`);
     if(!response.ok){
         const errorText = await response.text()
         const error = new Error('An error occurred while fetching the products');
@@ -19,8 +19,8 @@ export async function fetchProducts(){
 
 
 export async function fetchProduct(id){
-    
-    const response = await fetch(`${firebaseConfig.databaseURL}/products/product${id}.json`);
+    const idToken =  localStorage.getItem('authToken');
+    const response = await fetch(`${firebaseConfig.databaseURL}/products/product${id}.json?auth=${idToken}`);
     if(!response.ok){
         const errorText = await response.text()
         const error = new Error('An error occurred while fetching the product');
