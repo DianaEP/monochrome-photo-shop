@@ -3,6 +3,7 @@ import { login, register } from "../util/http";
 import { useMutation } from "@tanstack/react-query";
 import { auth } from "../firebaseConfig";
 import { onIdTokenChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 
 const AuthContext = createContext();
@@ -16,10 +17,12 @@ export function AuthContextProvider({children}){
       const token = localStorage.getItem("authToken");
       if(token){
         const user = auth.currentUser;
+        
         if(user){
           const firebaseToken = await user.getIdToken();
           if(token !== firebaseToken){
             localStorage.removeItem("authToken");
+            localStorage.removeItem('uid')
             setIsLoggedIn(false);
           }
         }
@@ -46,6 +49,7 @@ export function AuthContextProvider({children}){
 
       const handleLogout = () => {
         localStorage.removeItem("authToken");
+        localStorage.removeItem('uid')
         setIsLoggedIn(false)
         
       }

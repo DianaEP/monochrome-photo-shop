@@ -1,3 +1,4 @@
+import { getAuth } from "firebase/auth";
 import firebaseConfig from "../firebaseConfig";
 
 export async function fetchProducts(){
@@ -7,7 +8,16 @@ export async function fetchProducts(){
         const errorText = await response.text()
         const error = new Error('An error occurred while fetching the products');
         error.code = response.status;
-        error.info = errorText;
+        try {
+            const parsedError = JSON.parse(errorText);
+            if (parsedError && parsedError.error) {
+                error.info = parsedError.error;  
+            } else {
+                error.info = parsedError.message || 'An unexpected error occurred.'; 
+            }
+        } catch (error) {
+            error.info = 'An unexpected error occurred.';
+        }
         throw error;
     }
     
@@ -25,7 +35,16 @@ export async function fetchProduct(id){
         const errorText = await response.text()
         const error = new Error('An error occurred while fetching the product');
         error.code = response.status;
-        error.info = errorText;
+        try {
+            const parsedError = JSON.parse(errorText);
+            if (parsedError && parsedError.error) {
+                error.info = parsedError.error;  
+            } else {
+                error.info = parsedError.message || 'An unexpected error occurred.'; 
+            }
+        } catch (error) {
+            error.info = 'An unexpected error occurred.';
+        }
         throw error;
     }
     
@@ -50,7 +69,16 @@ export async function postOrders(orderData){
         const errorText = await response.text();
         const error = new Error('An error occurred while posting the error');
         error.code = response.status;
-        error.info = errorText;
+        try {
+            const parsedError = JSON.parse(errorText);
+            if (parsedError && parsedError.error) {
+                error.info = parsedError.error;  
+            } else {
+                error.info = parsedError.message || 'An unexpected error occurred.'; 
+            }
+        } catch (error) {
+            error.info = 'An unexpected error occurred.';
+        }
         throw error;
     }
 
@@ -80,21 +108,72 @@ export async function register(userData){
         const errorText = await response.text();
         const error = new Error('Failed to Register');
         error.code = response.status;
-        error.info = errorText;
+        try {
+            const parsedError = JSON.parse(errorText);
+            if (parsedError && parsedError.error) {
+                error.info = parsedError.error;  
+            } else {
+                error.info = parsedError.message || 'An unexpected error occurred.'; 
+            }
+        } catch (error) {
+            error.info = 'An unexpected error occurred.';
+        }
         throw error;
     }
 
     const dataRegister = await response.json();
     const uid = dataRegister.localId;
-    
     const idToken = dataRegister.idToken;
 
     localStorage.setItem('authToken', idToken);
+    localStorage.setItem('uid', uid);
 
-    await saveAdditionalUserData( additionalData, idToken, uid);
+    await saveAdditionalUserData( additionalData , idToken, uid);
 
     return dataRegister;
 }
+
+
+// GET USER DATA IN USERS
+
+export async function getAdditionalUserData(){
+    const idToken = localStorage.getItem('authToken');
+    const uid = localStorage.getItem('uid')
+  
+    const response = await fetch(`${firebaseConfig.databaseURL}/users/${uid}.json?auth=${idToken}`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Authorization': `Bearer ${idToken}`, // not working for firebase
+        },
+    })
+
+    if(!response.ok){
+        const errorText = await response.text(); 
+        const error = new Error('Failed to fetch user data');
+        error.code = response.status;
+        try {
+            const parsedError = JSON.parse(errorText);
+            if (parsedError && parsedError.error) {
+                error.info = parsedError.error;  
+            } else {
+                error.info = parsedError.message || 'An unexpected error occurred.'; 
+            }
+        } catch (error) {
+            error.info = 'An unexpected error occurred.';
+        }
+
+        throw error;
+    }
+
+    const userData = await response.json();
+    return userData;
+}
+
+
+
+
+
 
 // POST USER DATA TO USERS
 
@@ -114,10 +193,20 @@ async function saveAdditionalUserData( additionalData,idToken,uid){
         console.error('Error response from Firebase:', errorText);
         const error = new Error('Failed to save user data');
         error.code = response.status;
-        error.info = errorText;
+        try {
+            const parsedError = JSON.parse(errorText);
+            if (parsedError && parsedError.error) {
+                error.info = parsedError.error;  
+            } else {
+                error.info = parsedError.message || 'An unexpected error occurred.'; 
+            }
+        } catch (error) {
+            error.info = 'An unexpected error occurred.';
+        }
         throw error;
     }
 
+    
     const additionalUserData = await response.json();
     return additionalUserData;
 }
@@ -140,7 +229,16 @@ export async function updateAdditionalUserData(uid, updatedAdditionalData){
         const errorText = await response.text();
         const error = new Error('Failed to update user data');
         error.code = response.status;
-        error.info = errorText;
+        try {
+            const parsedError = JSON.parse(errorText);
+            if (parsedError && parsedError.error) {
+                error.info = parsedError.error;  
+            } else {
+                error.info = parsedError.message || 'An unexpected error occurred.'; 
+            }
+        } catch (error) {
+            error.info = 'An unexpected error occurred.';
+        }
         throw error;
     }
 
@@ -171,13 +269,23 @@ export async function login(userData){
         const errorText = await response.text();
         const error = new Error('Failed to Login');
         error.code = response.status;
-        error.info = errorText;
+        try {
+            const parsedError = JSON.parse(errorText);
+            if (parsedError && parsedError.error) {
+                error.info = parsedError.error;  
+            } else {
+                error.info = parsedError.message || 'An unexpected error occurred.'; 
+            }
+        } catch (error) {
+            error.info = 'An unexpected error occurred.';
+        }
         throw error;
     }
 
     const dataLogin = await response.json();
     
     localStorage.setItem('authToken', dataLogin.idToken);
+    localStorage.setItem('uid', dataLogin.localId)
     return dataLogin;
 }
 

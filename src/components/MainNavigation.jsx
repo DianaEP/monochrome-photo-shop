@@ -5,6 +5,7 @@ import logo from '../assets/logo/mountain-logo.svg'
 import classes from './MainNavigation.module.css'
 import Button from "../UI/Button";
 import { RiShoppingCartLine } from "react-icons/ri";
+import { LiaUserEditSolid } from "react-icons/lia";
 import { useContext } from "react";
 import CartContext from "../store/CartContext";
 import ModalContextActions from "../store/ModalContextActions";
@@ -29,6 +30,10 @@ export default function MainNavigation() {
     modalContext.showCart();
   }
 
+  function handleShowUser(){
+    modalContext.showUser();
+  }
+
   function handleUserLogout(){
     handleLogout();
     cartContext.clearCart();
@@ -51,6 +56,15 @@ export default function MainNavigation() {
               <NavLink to='/products' className={({isActive}) => (isActive ? classes.active : undefined)}>Products</NavLink>
             </li>
           </div>
+
+          {isLoggedIn && 
+            <li onClick={handleShowUser}>
+              <div className={classes.svg}>
+                  <LiaUserEditSolid />
+              </div>
+            </li>
+          }
+
 
           <li onClick={handleShowCart}>
             <div className={classes.svg}>

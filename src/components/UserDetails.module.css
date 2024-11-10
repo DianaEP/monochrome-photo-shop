@@ -1,0 +1,22 @@
+.userModal{
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.userModal h2{
+    font-family: var(--font-family-title);
+    text-align: center;
+    font-size: 2rem;
+}
+
+.userForm{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.userButtons{
+    text-align: right;
+}

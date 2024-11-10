@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Category from "../components/Category";
 import Loading from "../components/Loading";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 
 const container = {
