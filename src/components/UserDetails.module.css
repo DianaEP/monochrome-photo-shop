@@ -1,3 +1,9 @@
+.error{
+    color: var(--color);
+    font-size: 0.7rem;
+    padding-left: 0.5rem;
+}
+
 .userModal{
     padding: 0.5rem 1rem;
     display: flex;

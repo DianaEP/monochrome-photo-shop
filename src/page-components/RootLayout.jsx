@@ -3,6 +3,7 @@ import MainNavigation from "../components/MainNavigation";
 import classes from './RootLayout.module.css'
 import Cart from "../components/Cart";
 import UserDetails from "../components/UserDetails";
+import DeleteAccount from "../components/delete-account/DeleteAccount";
 
 export default function RouteLayout(){
     return(
@@ -10,6 +11,7 @@ export default function RouteLayout(){
             <MainNavigation/>
             <Cart/>
             <UserDetails/>
+            <DeleteAccount/>
             <main className={classes.main}>
                 <Outlet/>
             </main>

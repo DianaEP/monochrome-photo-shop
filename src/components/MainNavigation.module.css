@@ -41,7 +41,7 @@
    
 }
 
-.list li:nth-child(2){
+.list li:last-of-type{
     margin-right: 1.5rem;
     position: relative;
 }
@@ -53,6 +53,12 @@
     column-gap: 4rem;
 }
 
+.svg{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
 
 .svg svg{
     font-size: 1.3rem;
@@ -61,7 +67,7 @@
 
 .badge{
     position: absolute;
-    top: -15px;
+    top: -14px;
     right: -12px;
     border-radius: 50%;
     background-color: var(--color);

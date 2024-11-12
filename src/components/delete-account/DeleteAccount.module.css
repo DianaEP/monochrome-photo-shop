@@ -1,0 +1,39 @@
+.deleteModal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    row-gap: 1rem;
+
+}
+
+.attentionIcon{
+    font-size: 3rem;
+    color: var(--color);
+}
+
+
+.deleteModal h3{
+    font-family: var(--font-family-title);
+    font-size: 1.7rem;
+    margin: 0;
+}
+
+.text{
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.text p:first-of-type{
+    border-bottom: var(--border-bottom-line);
+    padding-bottom: 0.5rem;
+}
+
+.deleteModal .deleteButtons{
+    align-self: flex-end;
+    margin-right: 2rem;
+}
+
+
+

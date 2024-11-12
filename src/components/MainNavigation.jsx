@@ -6,6 +6,7 @@ import classes from './MainNavigation.module.css'
 import Button from "../UI/Button";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { LiaUserEditSolid } from "react-icons/lia";
+import { AiOutlineUserDelete } from "react-icons/ai";
 import { useContext } from "react";
 import CartContext from "../store/CartContext";
 import ModalContextActions from "../store/ModalContextActions";
@@ -34,6 +35,10 @@ export default function MainNavigation() {
     modalContext.showUser();
   }
 
+  function handleShowDeleteAccount(){
+    modalContext.showDelete();
+  }
+
   function handleUserLogout(){
     handleLogout();
     cartContext.clearCart();
@@ -57,23 +62,28 @@ export default function MainNavigation() {
             </li>
           </div>
 
-          {isLoggedIn && 
-            <li onClick={handleShowUser}>
-              <div className={classes.svg}>
-                  <LiaUserEditSolid />
-              </div>
+          <div className={classes.svg}>
+            {isLoggedIn && 
+              <li onClick={handleShowDeleteAccount}>
+                  <AiOutlineUserDelete />
+              </li>
+            }
+
+            {isLoggedIn && 
+              <li onClick={handleShowUser}>
+                    <LiaUserEditSolid />
+              </li>
+            }
+
+
+            <li onClick={handleShowCart}>
+                <RiShoppingCartLine />
+                {totalCartProducts > 0 && (
+                  <span className={classes.badge}>{totalCartProducts}</span>
+                )}
             </li>
-          }
+          </div>
 
-
-          <li onClick={handleShowCart}>
-            <div className={classes.svg}>
-              <RiShoppingCartLine />
-              {totalCartProducts > 0 && (
-                <span className={classes.badge}>{totalCartProducts}</span>
-              )}
-            </div>
-          </li>
         </ul>
         {isLoggedIn ? (
           <Button onClick={handleUserLogout}>Logout</Button>

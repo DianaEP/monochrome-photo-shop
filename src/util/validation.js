@@ -93,6 +93,16 @@ export default function validation(data,formType){
             errors.lastName = "Last Name is required"
         }
     }
+
+    if(formType === 'userDetails'){
+        if(!data.firstName.trim()){
+            errors.firstName = "First Name is required"
+        }
+
+        if(!data.lastName.trim()){
+            errors.lastName = "Last Name is required"
+        }
+    }
     
     return errors;
 }

@@ -11,7 +11,8 @@ export async function fetchProducts(){
         try {
             const parsedError = JSON.parse(errorText);
             if (parsedError && parsedError.error) {
-                error.info = parsedError.error;  
+                error.info = parsedError.error?.message || parsedError.error ||'An unexpected error occurred.';  
+                error.info = error.info.includes('_') ? error.info.replace(/_/g, ' ') : error.info;  
             } else {
                 error.info = parsedError.message || 'An unexpected error occurred.'; 
             }
@@ -38,7 +39,8 @@ export async function fetchProduct(id){
         try {
             const parsedError = JSON.parse(errorText);
             if (parsedError && parsedError.error) {
-                error.info = parsedError.error;  
+                error.info = parsedError.error?.message || parsedError.error ||'An unexpected error occurred.';  
+                error.info = error.info.includes('_') ? error.info.replace(/_/g, ' ') : error.info; 
             } else {
                 error.info = parsedError.message || 'An unexpected error occurred.'; 
             }
@@ -72,7 +74,8 @@ export async function postOrders(orderData){
         try {
             const parsedError = JSON.parse(errorText);
             if (parsedError && parsedError.error) {
-                error.info = parsedError.error;  
+                error.info = parsedError.error?.message || parsedError.error ||'An unexpected error occurred.';  
+                error.info = error.info.includes('_') ? error.info.replace(/_/g, ' ') : error.info;
             } else {
                 error.info = parsedError.message || 'An unexpected error occurred.'; 
             }
@@ -111,7 +114,8 @@ export async function register(userData){
         try {
             const parsedError = JSON.parse(errorText);
             if (parsedError && parsedError.error) {
-                error.info = parsedError.error;  
+                error.info = parsedError.error?.message || parsedError.error ||'An unexpected error occurred.';  
+                error.info = error.info.includes('_') ? error.info.replace(/_/g, ' ') : error.info;
             } else {
                 error.info = parsedError.message || 'An unexpected error occurred.'; 
             }
@@ -155,7 +159,8 @@ export async function getAdditionalUserData(){
         try {
             const parsedError = JSON.parse(errorText);
             if (parsedError && parsedError.error) {
-                error.info = parsedError.error;  
+                error.info = parsedError.error?.message || parsedError.error ||'An unexpected error occurred.';  
+                error.info = error.info.includes('_') ? error.info.replace(/_/g, ' ') : error.info;  
             } else {
                 error.info = parsedError.message || 'An unexpected error occurred.'; 
             }
@@ -196,7 +201,8 @@ async function saveAdditionalUserData( additionalData,idToken,uid){
         try {
             const parsedError = JSON.parse(errorText);
             if (parsedError && parsedError.error) {
-                error.info = parsedError.error;  
+                error.info = parsedError.error?.message || parsedError.error ||'An unexpected error occurred.';  
+                error.info = error.info.includes('_') ? error.info.replace(/_/g, ' ') : error.info; 
             } else {
                 error.info = parsedError.message || 'An unexpected error occurred.'; 
             }
@@ -213,8 +219,9 @@ async function saveAdditionalUserData( additionalData,idToken,uid){
 
 // UPDATE USER DATA IN USERS
 
-export async function updateAdditionalUserData(uid, updatedAdditionalData){
+export async function updateAdditionalUserData(updatedAdditionalData){
     const idToken = localStorage.getItem('authToken');
+    const uid = localStorage.getItem('uid')
 
     const response = await fetch(`${firebaseConfig.databaseURL}/users/${uid}.json?auth=${idToken}`,{
         method: 'PATCH',
@@ -232,7 +239,8 @@ export async function updateAdditionalUserData(uid, updatedAdditionalData){
         try {
             const parsedError = JSON.parse(errorText);
             if (parsedError && parsedError.error) {
-                error.info = parsedError.error;  
+                error.info = parsedError.error?.message || parsedError.error ||'An unexpected error occurred.';  
+                error.info = error.info.includes('_') ? error.info.replace(/_/g, ' ') : error.info; 
             } else {
                 error.info = parsedError.message || 'An unexpected error occurred.'; 
             }
@@ -272,7 +280,8 @@ export async function login(userData){
         try {
             const parsedError = JSON.parse(errorText);
             if (parsedError && parsedError.error) {
-                error.info = parsedError.error;  
+                error.info = parsedError.error?.message || parsedError.error ||'An unexpected error occurred.';  
+                error.info = error.info.includes('_') ? error.info.replace(/_/g, ' ') : error.info; 
             } else {
                 error.info = parsedError.message || 'An unexpected error occurred.'; 
             }
@@ -289,3 +298,52 @@ export async function login(userData){
     return dataLogin;
 }
 
+// DELETE ACCOUNT
+
+export async function deleteAccount(){
+    const idToken = localStorage.getItem('authToken');
+    const uid = localStorage.getItem('uid');
+
+    // DELETE ACCOUNT
+    const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:delete?key=${firebaseConfig.apiKey}`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({idToken})
+    })
+
+    if(!response.ok){
+        const errorText = await response.text();
+        const error = new Error('Failed to delete account');
+        error.code = response.status;
+        try {
+            const parsedError = JSON.parse(errorText);
+            if (parsedError && parsedError.error) {
+                error.info = parsedError.error?.message || parsedError.error ||'An unexpected error occurred.';  
+                error.info = error.info.includes('_') ? error.info.replace(/_/g, ' ') : error.info;
+            } else {
+                error.info = parsedError.message || 'An unexpected error occurred.'; 
+            }
+        } catch (error) {
+            error.info = 'An unexpected error occurred.';
+        }
+        throw error;
+    }
+
+    // DELETE USER DATA FROM DATABASE
+    const dbResponse = await fetch(`${firebaseConfig.databaseURL}/users/${uid}.json?auth=${idToken}`, {
+        method: 'DELETE'
+    });
+
+    if (!dbResponse.ok) {
+        const dbErrorText = await dbResponse.text();
+        console.error('Failed to delete user data:', dbErrorText);
+    }
+
+    const dataDeleteAccount =  await response.json();
+    localStorage.removeItem('authToken')
+    localStorage.removeItem('uid')
+
+    return dataDeleteAccount;
+}
