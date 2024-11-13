@@ -70,7 +70,11 @@ export function CartContextProvider({children}){
     const[cartState, dispatchCartAction] = useReducer(cartReducer, initialCartState)
 
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cartState))
+        if (cartState.products.length > 0) {
+            localStorage.setItem('cart', JSON.stringify(cartState));
+        } else {
+            localStorage.removeItem('cart'); 
+        }
     },[cartState])
     
     function addProduct(product){

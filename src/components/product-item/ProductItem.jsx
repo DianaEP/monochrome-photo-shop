@@ -1,6 +1,6 @@
 import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
-import Button from "../UI/Button";
-import { currencyFormatter } from "../util/formatting";
+import Button from "../../UI/button/Button";
+import { currencyFormatter } from "../../util/formatting";
 import classes from './ProductItem.module.css'
 import { motion } from "framer-motion";
 
@@ -20,6 +20,8 @@ export default function ProductItem({ product, handleAddProductToCart, productOn
   function handleDetailsNavigation(){
     navigate(`/products/${product.id}`)
   }
+
+
 
  
   return (

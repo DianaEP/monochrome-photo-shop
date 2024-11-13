@@ -1,17 +1,15 @@
 import classes from "./UserDetails.module.css";
-import Modal from "../UI/Modal";
-import { useContext, useEffect, useState } from "react";
-import ModalContextActions from "../store/ModalContextActions";
+import Modal from "../../UI/modal/Modal";
+import { useContext, useEffect} from "react";
+import ModalContextActions from "../../store/ModalContextActions";
 import { AnimatePresence } from "framer-motion";
-import { auth } from "../firebaseConfig";
-import { getAdditionalUserData, updateAdditionalUserData } from "../util/http";
-import { getAuth } from "firebase/auth";
+import { getAdditionalUserData, updateAdditionalUserData } from "../../util/http";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import Loading from "./Loading";
-import ErrorBlock from "./ErrorBlock";
-import Input from "../UI/Input";
-import Button from "../UI/Button";
-import useFormValidation from "../hooks/useFormValidation";
+import Loading from "../loading-block/Loading";
+import ErrorBlock from "../error-block/ErrorBlock";
+import Input from "../../UI/input/Input";
+import Button from "../../UI/button/Button";
+import useFormValidation from "../../hooks/useFormValidation";
 import { useNavigate } from "react-router-dom";
 
 const initialUserData = {

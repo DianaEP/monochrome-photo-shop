@@ -1,12 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import ProductItem from '../components/ProductItem'
+import ProductItem from '../../components/product-item/ProductItem'
 import classes from './ProductPage.module.css'
 import { useQuery } from '@tanstack/react-query';
-import { fetchProduct } from '../util/http';
-import ErrorBlock from '../components/ErrorBlock';
-import Loading from '../components/Loading';
+import { fetchProduct } from '../../util/http';
+import ErrorBlock from '../../components/error-block/ErrorBlock';
+import Loading from '../../components/loading-block/Loading';
 import { useContext } from 'react';
-import CartContext from '../store/CartContext';
+import CartContext from '../../store/CartContext';
 
 export default function ProductPage(){
     const cartContext = useContext(CartContext)

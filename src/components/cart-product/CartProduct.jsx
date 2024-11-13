@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { currencyFormatter } from "../util/formatting";
+import { currencyFormatter } from "../../util/formatting";
 import classes from "./CartProduct.module.css";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
-import CartContext from "../store/CartContext";
+import CartContext from "../../store/CartContext";
 import { motion } from "framer-motion";
 
 export default function CartProduct({ product }) {

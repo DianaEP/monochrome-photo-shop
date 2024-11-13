@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import classes from "./DeleteAccount.module.css";
 import ModalContextActions from "../../store/ModalContextActions";
-import Button from "../../UI/Button";
+import Button from "../../UI/button/Button";
 import { AnimatePresence } from "framer-motion";
-import Modal from "../../UI/Modal";
+import Modal from "../../UI/modal/Modal";
 import { BiSolidError } from "react-icons/bi";
 import { useMutation } from "@tanstack/react-query";
 import { deleteAccount } from "../../util/http";
 import { useNavigate } from "react-router-dom";
-import ErrorBlock from "../ErrorBlock";
+import ErrorBlock from "../error-block/ErrorBlock";
 
 export default function DeleteAccount() {
   const navigate = useNavigate()

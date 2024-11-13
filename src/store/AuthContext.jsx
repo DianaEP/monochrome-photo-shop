@@ -11,45 +11,51 @@ const AuthContext = createContext();
 export function AuthContextProvider({children}){
     const[isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("authToken"));
 
-    // checking token validity by compare it with the one firebase
+    // checking token validity by storing in local storage the expiration time and compare it to current time every minute
    useEffect(() => {
-    async function checkTokenValidity(){
-      const token = localStorage.getItem("authToken");
-      if(token){
-        const user = auth.currentUser;
-        
-        if(user){
-          const firebaseToken = await user.getIdToken();
-          if(token !== firebaseToken){
-            localStorage.removeItem("authToken");
-            localStorage.removeItem('uid')
-            setIsLoggedIn(false);
-          }
-        }
-      }
+    function checkTokenValidity(){
+      const expirationTime = Number(localStorage.getItem('tokenExpiration'));
+      const currentTime = Date.now();
+
+      console.log('expiration time' + expirationTime);
+      console.log('current time' + currentTime);
+      
+      
+
+      if(expirationTime && currentTime > expirationTime){
+        handleLogout();
+      }  
     }
     checkTokenValidity();
+
+    const intervalId = setInterval(checkTokenValidity, 60000);
+    return () => clearInterval(intervalId);
    },[])
     
     
     const{mutate: mutateLogin, isLoading: isLoadingLogin, isError: isErrorLogin,  error: errorLogin } = useMutation({
         mutationFn: login,
         onSuccess : (data) => { 
+          const expirationTime = Date.now() + 3600 * 1000;
+          localStorage.setItem('tokenExpiration', expirationTime.toString());
           localStorage.setItem('authToken', data.idToken)  
           setIsLoggedIn(true)
         }
       })
-      const{mutate: mutateRegister, isLoading: isLoadingRegister, isError: isErrorRegister,  error: errorRegister } = useMutation({
+    const{mutate: mutateRegister, isLoading: isLoadingRegister, isError: isErrorRegister,  error: errorRegister } = useMutation({
         mutationFn: register,
         onSuccess : (data) => { 
+          const expirationTime = Date.now() + 3600 * 1000;
+          localStorage.setItem('tokenExpiration', expirationTime.toString());
           localStorage.setItem('authToken', data.idToken)  
           setIsLoggedIn(true)
         }
       })
 
-      const handleLogout = () => {
+      function handleLogout(){
         localStorage.removeItem("authToken");
         localStorage.removeItem('uid')
+        localStorage.removeItem('cart')
         setIsLoggedIn(false)
         
       }
@@ -73,3 +79,20 @@ export function AuthContextProvider({children}){
 }
 
 export default AuthContext;
+
+// checking token validity by compare it with the one firebase
+// async function checkTokenValidity(){
+//   const token = localStorage.getItem("authToken");
+//   if(token){
+//     const user = auth.currentUser;
+    
+//     if(user){
+//       const firebaseToken = await user.getIdToken();
+//       if(token !== firebaseToken){
+//         localStorage.removeItem("authToken");
+//         localStorage.removeItem('uid')
+//         setIsLoggedIn(false);
+//       }
+//     }
+//   }
+// }

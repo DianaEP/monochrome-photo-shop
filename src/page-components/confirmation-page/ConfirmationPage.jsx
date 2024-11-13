@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import classes from "./ConfirmationPage.module.css";
-import Button from "../UI/Button";
-import { currencyFormatter } from "../util/formatting";
+import Button from "../../UI/button/Button";
+import { currencyFormatter } from "../../util/formatting";
 import { FaTruckFast } from "react-icons/fa6";
 
 export default function ConfirmationPage() {

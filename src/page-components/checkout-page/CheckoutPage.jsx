@@ -1,15 +1,15 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import CartContext from "../store/CartContext";
-import { currencyFormatter } from "../util/formatting";
-import Input from "../UI/Input";
-import Button from "../UI/Button";
+import CartContext from "../../store/CartContext";
+import { currencyFormatter } from "../../util/formatting";
+import Input from "../../UI/input/Input";
+import Button from "../../UI/button/Button";
 import classes from './CheckoutPage.module.css'
-import CheckoutForm from "../components/CheckoutForm";
+import CheckoutForm from "../../components/checkout-form/CheckoutForm";
 import { useMutation } from "@tanstack/react-query";
-import { postOrders } from "../util/http";
-import Loading from "../components/Loading";
-import ErrorBlock from "../components/ErrorBlock";
+import { postOrders } from "../../util/http";
+import Loading from "../../components/loading-block/Loading";
+import ErrorBlock from "../../components/error-block/ErrorBlock";
 import { animate, AnimatePresence, motion } from "framer-motion";
 
 export default function CheckoutPage() {

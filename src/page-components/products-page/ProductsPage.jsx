@@ -1,12 +1,12 @@
-import Search from "../components/Search";
+import Search from "../../components/search/Search";
 import classes from './ProductsPage.module.css'
-import ProductItem from "../components/ProductItem";
+import ProductItem from "../../components/product-item/ProductItem";
 import { useQuery } from "@tanstack/react-query";
-import { fetchProducts } from "../util/http";
-import ErrorBlock from "../components/ErrorBlock";
+import { fetchProducts } from "../../util/http";
+import ErrorBlock from "../../components/error-block/ErrorBlock";
 import { useEffect, useState } from "react";
-import Category from "../components/Category";
-import Loading from "../components/Loading";
+import Category from "../../components/category/Category";
+import Loading from "../../components/loading-block/Loading";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -66,21 +66,44 @@ export default function ProductsPage(){
                 {isError && 
                     <ErrorBlock title={error.info} status={error.code} message={error.message}/>
                 }
+               // {!isLoading && !isError && (
                 <motion.ul 
                     className={classes.products}
                     variants={container}
                     initial="hidden"
-                    animate={filteredProducts.length > 0 ? "show" : "hidden"}  
+                    animate="show" 
+                    key={filteredProducts.length} // force the animation to render for each card
                 >
-                    {!isLoading && !isError && filteredProducts.length === 0 && (
+                    {filteredProducts.length === 0 ? (
                         <p className={classes.noProduct}>No products found</p>
-                    )}
-                    {filteredProducts.length > 0 && (
+                    ):(
                         filteredProducts.map((product)=>(
                             <ProductItem key={product.id} product={product} productOnProducts={productOnProducts}/>
-                    )))}
+                        ))
+                    )}
+        
                 </motion.ul>
+)}
             </div>
         </>
     )
 }
+
+
+
+{/* <motion.ul 
+className={classes.products}
+variants={container}
+initial="hidden"
+animate="show" 
+key={filteredProducts.length} // force the animation to render for each card
+>
+{!isLoading && !isError && filteredProducts.length === 0 ? (
+    <p className={classes.noProduct}>No products found</p>
+):(
+    filteredProducts.map((product)=>(
+        <ProductItem key={product.id} product={product} productOnProducts={productOnProducts}/>
+    ))
+)}
+
+</motion.ul> */}

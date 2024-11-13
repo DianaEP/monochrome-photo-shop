@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import classes from "./Auth.module.css";
-import Input from "../../UI/Input";
-import Button from "../../UI/Button";
+import Input from "../../UI/input/Input";
+import Button from "../../UI/button/Button";
 import validation from "../../util/validation";
 import useFormValidation from "../../hooks/useFormValidation";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../store/AuthContext";
-import Loading from "../Loading";
-import ErrorBlock from "../ErrorBlock";
+import Loading from "../loading-block/Loading";
+import ErrorBlock from "../error-block/ErrorBlock";
 
 const registerInput = [
   { type: "text", label: "First Name", id: "firstName", name: "firstName" },

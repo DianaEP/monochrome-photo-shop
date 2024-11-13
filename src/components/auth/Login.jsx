@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import Input from "../../UI/Input";
+import Input from "../../UI/input/Input";
 import classes from "./Auth.module.css";
-import Button from "../../UI/Button";
+import Button from "../../UI/button/Button";
 import validation from "../../util/validation";
 import useFormValidation from "../../hooks/useFormValidation";
 import AuthContext from "../../store/AuthContext";
-import Loading from "../Loading";
-import ErrorBlock from "../ErrorBlock";
+import Loading from "../loading-block/Loading";
+import ErrorBlock from "../error-block/ErrorBlock";
 import { useNavigate } from "react-router-dom";
 
 const initialLoginData = {

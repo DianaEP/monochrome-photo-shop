@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import Modal from "../UI/Modal";
+import Modal from "../../UI/modal/Modal";
 import classes from "./Cart.module.css";
-import CartContext from "../store/CartContext";
-import { currencyFormatter } from "../util/formatting";
-import Button from "../UI/Button";
-import ModalContextActions from "../store/ModalContextActions";
-import CartProduct from "./CartProduct";
+import CartContext from "../../store/CartContext";
+import { currencyFormatter } from "../../util/formatting";
+import Button from "../../UI/button/Button";
+import ModalContextActions from "../../store/ModalContextActions";
+import CartProduct from "../cart-product/CartProduct";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";

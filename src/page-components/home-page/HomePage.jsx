@@ -1,8 +1,5 @@
 import classes from "./HomePage.module.css";
-
-import { NavLink, useNavigate } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
-import MultiLayerParallax from "../UI/MultiLayerParallax";
+import MultiLayerParallax from "../../UI/multi-layer-parallax/MultiLayerParallax";
 
 export default function HomePage() {
 

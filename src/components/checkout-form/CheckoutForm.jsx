@@ -1,10 +1,10 @@
 import { useState } from "react";
 import classes from "./CheckoutForm.module.css";
-import Input from "../UI/Input";
-import Button from "../UI/Button";
-import validation from "../util/validation";
+import Input from "../../UI/input/Input";
+import Button from "../../UI/button/Button";
+import validation from "../../util/validation";
 import { useNavigate } from "react-router-dom";
-import useFormValidation from "../hooks/useFormValidation";
+import useFormValidation from "../../hooks/useFormValidation";
 import { useAnimate } from "framer-motion";
 
 const initialCheckoutData = {

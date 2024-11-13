@@ -1,7 +1,7 @@
 import classes from "./MultiLayerParallax.module.css";
-import homeImg from "../assets/home-img/background.png";
-import mountains from '../assets/home-img/subtractBg2.png'
-import Button from "../UI/Button";
+import homeImg from "../../assets/home-img/background.png";
+import mountains from '../../assets/home-img/subtractBg2.png'
+import Button from "../button/Button";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";

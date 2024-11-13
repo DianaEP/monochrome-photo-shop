@@ -1,7 +1,7 @@
 import { useState } from "react"
-import Login from "../components/auth/Login"
-import Register from "../components/auth/Register"
-import Button from "../UI/Button"
+import Login from "../../components/auth/Login"
+import Register from "../../components/auth/Register"
+import Button from "../../UI/button/Button"
 import classes from './AuthPage.module.css'
 
 export default function AuthPage(){
