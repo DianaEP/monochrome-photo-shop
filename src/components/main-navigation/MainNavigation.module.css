@@ -8,13 +8,6 @@
 
 }
 
-.homePage{
-    background-color: transparent;
-}
-
-.notHomePage{
-    background-color: transparent;
-}
 
 .logo{
     display: flex;
@@ -90,6 +83,10 @@
     display: none;
 }
 
+.iconText{
+    cursor: pointer;
+}
+
 
 @media(max-width: 950px){
     .burgerIcon{
@@ -161,6 +158,10 @@
 @media(max-width: 550px){
     .burgerNav{
         width: 40%;
+    }
+
+    .logo p{
+        font-size: 0.9rem;
     }
 }
 

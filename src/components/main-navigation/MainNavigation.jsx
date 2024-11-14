@@ -19,29 +19,11 @@ export default function MainNavigation() {
   const { handleLogout, isLoggedIn } = useContext(AuthContext);
 
   // For burger menu
-  // const navRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState); 
   };
 
-
-
-  // useEffect(() => {
-  //   function handleClickOutside(event){
-  //     console.log('Click outside detected, closing menu');
-  //     if(navRef.current && !navRef.current.contains(event.target) && isMenuOpen){
-  //       setIsMenuOpen(false);
-  //     }
-  //   } 
-
-  //   document.addEventListener('click', handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener('click', handleClickOutside);
-  //   };
-  // },[])
-
-  
 
   const totalCartProducts = cartContext.products.reduce(
     (totalNrOfProducts, product) => {
@@ -69,9 +51,7 @@ export default function MainNavigation() {
   }
   return (
     <header
-      className={`${classes.header} ${
-        isHomePage ? classes.homePage : classes.notHomePage
-      }`}
+      className={classes.header}
     >
       <div className={classes.logo}>
         <img src={logo} alt="logo" />
@@ -97,7 +77,6 @@ export default function MainNavigation() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.nav
-            // ref={navRef}
             className={`${classes.nav} ${isMenuOpen ? classes.burgerNav : ""} `}
             variants={{
               visible: { opacity: 1, y: 0 },
@@ -116,6 +95,7 @@ export default function MainNavigation() {
               handleShowUser={handleShowUser}
               handleUserLogout={handleUserLogout}
               isMenuOpen={isMenuOpen}
+              setIsMenuOpen={isMenuOpen ? setIsMenuOpen : undefined}
             />
           </motion.nav>
         )}

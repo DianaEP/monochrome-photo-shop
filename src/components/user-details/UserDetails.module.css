@@ -26,3 +26,11 @@
 .userButtons{
     text-align: right;
 }
+
+
+  
+@media(max-width: 590px){
+    .userModal h2{
+        font-size: 1.7rem;
+    }
+}

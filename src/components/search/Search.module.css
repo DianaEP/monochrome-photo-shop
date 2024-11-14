@@ -27,3 +27,27 @@
 .searchInput svg{
     font-size: 1.2rem;
 }
+
+
+
+@media(max-width: 850px){
+    .searchInput{
+        padding: 0.5rem 0.5rem;
+    }
+
+    .searchInput svg{
+        font-size: 1.1rem;
+    }
+}
+
+@media(max-width: 590px){
+    .searchInput{
+        padding: 0.6rem 0.5rem;
+    }
+    
+    
+    .searchInput input{
+        font-size: 0.9rem;
+    }
+
+}

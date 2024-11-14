@@ -6,6 +6,15 @@
 }
 
 
+@media(max-width: 590px){
+    .category{ 
+        width: 11.2rem;
+        font-size: 0.9rem;   
+    }
+}
+
+
+
 /* .category select{
     border: none;
     outline: none;

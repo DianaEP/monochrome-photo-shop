@@ -53,3 +53,26 @@
     box-shadow: var(--shadow);
     color: var(--color-border);
 }
+
+
+@media(max-width: 650px){
+    .productList img{
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .cartActions{
+        column-gap: 0.7rem;
+    }
+  }
+  
+  @media(max-width: 590px){
+    .productList img{
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .cartActionsDetails{
+        row-gap: 0.7rem;
+    }
+  }

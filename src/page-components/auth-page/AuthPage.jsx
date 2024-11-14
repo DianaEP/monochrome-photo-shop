@@ -9,7 +9,7 @@ export default function AuthPage(){
 
     const toggleForm = () => setIsLogin(!isLogin)
     return(
-        <>
+        <div className={classes.wrapper}>
             <div className={classes.authPage}>
                 <h1>{isLogin ? 'LOGIN' : 'REGISTER'}</h1>
                 {isLogin ? (
@@ -22,6 +22,6 @@ export default function AuthPage(){
                     <Button onClick={toggleForm} textOnly>{isLogin ? 'Go to Register' : 'Go to Login'}</Button>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

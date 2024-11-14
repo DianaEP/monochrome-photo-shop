@@ -12,16 +12,23 @@ export default function NavigationLinks({
     handleShowDeleteAccount,
     handleShowUser,
     handleUserLogout,
-    isMenuOpen
+    isMenuOpen,
+    setIsMenuOpen
   }){
+
+    function handleCloseNav(){
+      if(setIsMenuOpen){
+        setIsMenuOpen(false)
+      }
+    }
     return(
         <>
              <ul className={`${classes.list} ${isMenuOpen ? classes.burgerNavList : ''} `}>
               <div className={`${classes.pages} ${isMenuOpen ? classes.burgerNavPages : ''} `}>
-                <li>
+                <li onClick={handleCloseNav}>
                   <NavLink to='/' className={({isActive}) => (isActive ? classes.active : undefined)} end>Home</NavLink>
                 </li>
-                <li>
+                <li onClick={handleCloseNav}>
                   <NavLink to='/products' className={({isActive}) => (isActive ? classes.active : undefined)}>Products</NavLink>
                 </li>
               </div>
@@ -29,19 +36,19 @@ export default function NavigationLinks({
               <div className={`${classes.svg} ${isMenuOpen ? classes.burgerNavSvg : ''} `}>
                 {isLoggedIn && 
                   <li onClick={handleShowDeleteAccount}>
-                      <AiOutlineUserDelete />
+                      {isMenuOpen ? ( <span className={classes.iconText} onClick={handleCloseNav}>Delete Account</span> ) : <AiOutlineUserDelete />}
                   </li>
                 }
 
                 {isLoggedIn && 
                   <li onClick={handleShowUser}>
-                        <LiaUserEditSolid />
+                      {isMenuOpen ? ( <span className={classes.iconText} onClick={handleCloseNav}>Edit Details</span> ) : <LiaUserEditSolid />}
                   </li>
                 }
 
 
                 <li onClick={handleShowCart}>
-                    <RiShoppingCartLine />
+                    {isMenuOpen ? ( <span className={classes.iconText} onClick={handleCloseNav}>Cart</span> ) : <RiShoppingCartLine />}
                     {totalCartProducts > 0 && (
                       <span className={classes.badge}>{totalCartProducts}</span>
                     )}

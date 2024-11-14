@@ -66,7 +66,7 @@ export default function ProductsPage(){
                 {isError && 
                     <ErrorBlock title={error.info} status={error.code} message={error.message}/>
                 }
-               // {!isLoading && !isError && (
+                {!isLoading && !isError && (
                 <motion.ul 
                     className={classes.products}
                     variants={container}

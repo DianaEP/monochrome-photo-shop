@@ -35,3 +35,71 @@
     padding: 1rem;
 }
 
+@media(max-width: 1500px){
+    .productsPage h2{
+        font-size: 2rem;
+        margin-top: 5rem;
+    }
+    .description{
+        padding: 0 10rem;
+        font-size: 1.2rem;
+        line-height: 2rem;
+    }
+
+
+}
+
+@media(max-width: 850px){
+    .productsPage h2{
+        font-size: 2rem;
+    }
+    .description{
+        padding: 0 6rem;
+        font-size: 1.1rem;
+        line-height: 1.7rem;
+    }
+
+    .noProduct{
+        margin-top: 4rem;
+        font-size: 1.1rem;
+        padding: 0.5rem;
+    }
+}
+
+@media(max-width: 590px){
+    .productsPage h2{
+        font-size: 1.7rem;
+        margin-top: 4rem;
+    }
+    .description{
+        padding: 0 4rem;
+        font-size: 1rem;
+        line-height: 1.6rem;
+    }
+
+    .filters{
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        row-gap: 1rem;
+        padding: 0 3rem;
+    }
+
+    .noProduct{
+        margin-top: 4rem;
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+}
+
+@media(max-width: 400px){
+    .productsPage h2{
+        font-size: 1.5rem;
+        margin-top: 3rem;
+    }
+    .description{
+        display: none;
+    }
+}
+

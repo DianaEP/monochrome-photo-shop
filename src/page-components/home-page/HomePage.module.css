@@ -52,3 +52,43 @@
 
 
 
+@media(max-width: 1500px){
+    .text{
+        width: 60%;
+    }
+
+
+}
+
+@media(max-width: 850px){
+    .text{
+        width: 70%;
+        font-size: 1.2rem;
+    }
+
+    .text h2{
+        font-size: 1.6rem;
+    }
+}
+
+@media(max-width: 590px){
+    .text{
+        font-size: 1.1rem;
+        line-height: 1.7rem;
+    }
+
+    .text h2{
+        font-size: 1.5rem;
+    }
+}
+
+@media(max-width: 400px){
+    .text{
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    .text h2{
+        font-size: 1.3rem;
+    }
+}

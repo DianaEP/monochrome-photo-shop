@@ -29,6 +29,14 @@
     color: var(--color-border-hover);
 }
 
+@media(max-width: 590px){
+    .button{
+        padding: 0.4rem 0.7rem;
+        font-size: 0.9rem;
+    }
+
+}
+
 
 
 

@@ -36,3 +36,10 @@
     box-shadow: inset 0px 0px 5px var(--color);
     width: 5rem;
 }
+
+@media(max-width: 590px){
+    .container input{
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}

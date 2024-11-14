@@ -1,6 +1,6 @@
 import classes from "./MultiLayerParallax.module.css";
-import homeImg from "../../assets/home-img/background.png";
-import mountains from '../../assets/home-img/subtractBg2.png'
+// import homeImg from "../../assets/home-img/background.png";
+// import mountains from '../../assets/home-img/subtractBg2.png'
 import Button from "../button/Button";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
@@ -27,8 +27,8 @@ export default function MultiLayerParallax() {
   }
   return (
     <div className={classes.home} ref={ref}>
-      <motion.img src={homeImg} alt="home-image" style={{opacity: opacityY, y: backgroundY,} }/>
-      <img src={mountains} alt="home-image" />
+      <motion.img src='/home-img/background.png' alt="home-image" style={{opacity: opacityY, y: backgroundY,} }/>
+      <img src='/home-img/subtractBg2.png' alt="home-image" />
       <motion.h1 className={classes.title} style={{y: textY}}>
         <span>Echoes in Gray: </span>Timeless Monochrome Photography
       </motion.h1>

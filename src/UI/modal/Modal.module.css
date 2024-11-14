@@ -65,3 +65,26 @@
   scrollbar-width: thin;
   scrollbar-color: var(--color-background);
 }
+
+
+@media(max-width: 850px){
+  .modalContent {
+    padding: 3rem;
+    width: 60%;
+  } 
+}
+
+@media(max-width: 590px){
+  .closeButton {
+    font-size: 1.3rem;
+  }
+  
+}
+
+@media(max-width: 450px){
+  .modalContent {
+    width: 70%;
+    padding: 1.5rem;
+  } 
+  
+}

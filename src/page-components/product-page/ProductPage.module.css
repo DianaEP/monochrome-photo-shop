@@ -4,3 +4,22 @@
     font-family: var(--font-family-title);
     margin-top: 4rem;
 }
+
+
+@media(max-width: 850px){
+    .productPage h2{
+        font-size: 1.8rem;
+        margin: 3rem 0 0;
+    }
+   
+}
+
+@media(max-width: 590px){
+    .productPage h2{
+        font-size: 1.5rem;
+    }
+    
+}
+
+
+
