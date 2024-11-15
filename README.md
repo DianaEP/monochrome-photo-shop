@@ -27,17 +27,17 @@ This project is designed for learning purposes, and it uses a **demo Firebase da
 
 ### 1. Clone the Project
 
-git clone https://github.com/DianaEP/monochrome-photo-shop.git
-cd monochrome-photo-shop
+- git clone https://github.com/DianaEP/monochrome-photo-shop.git
+- cd monochrome-photo-shop
 
 ### 2. Install Dependencies
 
-npm install
+- npm install
 
 ### 3. Environment Setup
 
- 1. **Rename .env.demo to .env**
-After cloning the repository, you will see a file called .env.demo in the root of the project. 
+ 1. **Rename .env.demo to .env**  
+ After cloning the repository, you will see a file called .env.demo in the root of the project. 
 Rename this file to .env.
 
  2. **Firebase Credentials**
