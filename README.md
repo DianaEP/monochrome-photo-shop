@@ -40,20 +40,21 @@ This project is designed for learning purposes, and it uses a **demo Firebase da
  After cloning the repository, you will see a file called .env.demo in the root of the project. 
 Rename this file to .env.
 
- 2. **Firebase Credentials**
-In the .env file, you'll see pre-configured Firebase credentials (for my Firebase database). These are used to connect your app to my Firebase project for the demo. You don't need to do anything here; everything is set up for you to use right away.
+ 2. **Firebase Credentials**  
+ In the .env file, you'll see pre-configured Firebase credentials (for my Firebase database). These are used to connect your app to my Firebase project for the demo. You don't need to do anything here; everything is set up for you to use right away.
 
-*Important*: If you want to create your own Firebase project and connect the app to your own Firebase database, you can replace these values in the .env file with your own Firebase project credentials. You'll need to go to the Firebase Console and create a project to get your credentials.
+*Important*:  
+If you want to create your own Firebase project and connect the app to your own Firebase database, you can replace these values in the .env file with your own Firebase project credentials. You'll need to go to the Firebase Console and create a project to get your credentials.
 
-3. **Firebase API Key & Database URL**
+3. **Firebase API Key & Database URL**  
 If you're using your own Firebase project, these are the values you will need to provide in the .env file:
 
 - FIREBASE_API_KEY – Found in your Firebase project's settings.
 - FIREBASE_DATABASE_URL – Found in the Realtime Database section of your Firebase Console.
 
-4. **Demo**
-By default, the app is connected to my Firebase database. You can use the app to log in, register, and interact with the cart. 
-*Important*: 
+4. **Demo**  
+By default, the app is connected to my Firebase database. You can use the app to log in, register, and interact with the cart.  
+*Important*:  
 If you use the demo Firebase database:
 - I will be resetting the data daily.
 - When the data is reset, the app will start fresh, and you’ll need to re-enter your data.
@@ -64,7 +65,7 @@ npm run dev
 
 ## Notes
 
-- **For Learning Purposes:**
+- **For Learning Purposes:**  
 This project is primarily intended for learning purposes and is not intended for production use.
 
 - **Dummy Data:**
