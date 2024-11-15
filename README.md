@@ -47,13 +47,14 @@ Rename this file to .env.
 If you want to create your own Firebase project and connect the app to your own Firebase database, you can replace these values in the .env file with your own Firebase project credentials. You'll need to go to the Firebase Console and create a project to get your credentials.
 
 3. **Firebase API Key & Database URL**  
-If you're using your own Firebase project, these are the values you will need to provide in the .env file:
 
+If you're using your own Firebase project, these are the values you will need to provide in the .env file:
 - FIREBASE_API_KEY – Found in your Firebase project's settings.
 - FIREBASE_DATABASE_URL – Found in the Realtime Database section of your Firebase Console.
 
 4. **Demo**  
-By default, the app is connected to my Firebase database. You can use the app to log in, register, and interact with the cart.  
+By default, the app is connected to my Firebase database. You can use the app to log in, register, and interact with the cart. 
+
 *Important*:  
 If you use the demo Firebase database:
 - I will be resetting the data daily.
