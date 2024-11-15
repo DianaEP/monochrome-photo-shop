@@ -47,7 +47,7 @@ Rename this file to .env.
    VITE_FIREBASE_API_KEY=AIzaSyDSqNrl60QoqUSonJgcX9RmHiXy3ectueI
    VITE_FIREBASE_DATABASE_URL=https://e-commerce-app-68e67-default-rtdb.europe-west1.firebasedatabase.app
 
-    ```
+```
 *Important*:  
 If you want to create your own Firebase project and connect the app to your own Firebase database, you can replace these values in the .env file with your own Firebase project credentials. You'll need to go to the Firebase Console and create a project to get your credentials.
 
