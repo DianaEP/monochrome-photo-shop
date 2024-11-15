@@ -41,8 +41,13 @@ This project is designed for learning purposes, and it uses a **demo Firebase da
 Rename this file to .env.
 
  2. **Firebase Credentials**  
- In the .env file, you'll see pre-configured Firebase credentials (for my Firebase database). These are used to connect your app to my Firebase project for the demo. You don't need to do anything here; everything is set up for you to use right away.
+ In the `.env` file, you’ll have to replace the values with my demo Firebase credentials for testing:
 
+   ```env
+   VITE_FIREBASE_API_KEY=AIzaSyDSqNrl60QoqUSonJgcX9RmHiXy3ectueI
+   VITE_FIREBASE_DATABASE_URL=https://e-commerce-app-68e67-default-rtdb.europe-west1.firebasedatabase.app
+
+    ```
 *Important*:  
 If you want to create your own Firebase project and connect the app to your own Firebase database, you can replace these values in the .env file with your own Firebase project credentials. You'll need to go to the Firebase Console and create a project to get your credentials.
 
@@ -53,7 +58,7 @@ If you're using your own Firebase project, these are the values you will need to
 - FIREBASE_DATABASE_URL – Found in the Realtime Database section of your Firebase Console.
 
 4. **Demo**  
-By default, the app is connected to my Firebase database. You can use the app to log in, register, and interact with the cart. 
+You can use the app to log in, register, and interact with the cart. 
 
 *Important*:  
 If you use the demo Firebase database:
