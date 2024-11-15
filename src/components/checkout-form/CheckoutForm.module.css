@@ -36,3 +36,84 @@
     border-bottom: 1px solid var(--color-background);
     padding-bottom: 0.5rem;
 }
+
+@media(max-width: 950px){
+    /* .formCheckout{
+        width: 100%;
+    } */
+    .form{
+        width: 100%;
+        column-gap: 2rem;
+    }
+
+    .userDetails{
+        width: 60%
+    }
+
+    .card{
+        width: 90%;
+    }
+
+    .address{
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+
+    .cardDetails{
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+    
+    
+}
+
+@media(max-width: 750px){
+    .form{
+        display: flex;
+        flex-direction: column;
+        row-gap: 3rem;  
+    }
+
+    .userDetails{
+        width: 100%
+    }
+
+    .card{
+        width: 100%;
+    }
+
+    .address{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .cardDetails{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .buttonsCheckout{
+        margin-top: 4rem;
+    }
+    
+
+}
+
+@media(max-width: 670px){
+    .address{
+        display: flex;
+        flex-direction: column;
+        row-gap: 0;
+    }
+}
+
+@media(max-width: 550px){
+    .userDetails p, .card p{
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+    }
+
+}

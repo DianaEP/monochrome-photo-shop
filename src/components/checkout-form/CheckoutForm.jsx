@@ -49,7 +49,7 @@ export default function CheckoutForm({onOrderSubmit}) {
   }
 
   return (
-    <form onSubmit={handleSubmit} ref={scope}>
+    <form onSubmit={handleSubmit} ref={scope} className={classes.formCheckout}>
       <div className={classes.form}>
         <div className={classes.userDetails}>
           <p>Your details</p>

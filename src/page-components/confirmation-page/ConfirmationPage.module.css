@@ -78,3 +78,93 @@
 .totalAmount{
     font-weight: 600;
 }
+
+@media(max-width: 950px){
+    .confirmationPage h1{
+        font-size: 1.7rem;
+    }
+
+    .details h2{
+        font-size: 1.3rem;
+    }
+
+    .success{
+        font-size: 1.1rem;
+    }
+
+    .shipping span svg{
+        font-size: 1.7rem;
+    }
+    
+}
+
+@media(max-width: 650px){
+    .confirmationPage h1{
+        font-size: 1.5rem;
+    }
+
+    .details h2{
+        font-size: 1.1rem;
+    }
+
+    .success{
+        font-size: 1rem;
+    }
+
+    .shipping span svg{
+        font-size: 1.5rem;
+    }
+
+    .orderDetails h3{
+        font-size: 1.1rem;
+    }
+
+    .shipping h3{
+        font-size: 1.1rem;
+    }
+
+}
+
+@media(max-width: 550px){
+    .confirmationPage h1{
+        font-size: 1.3rem;
+    }
+
+    .details h2{
+        font-size: 1rem;
+    }
+
+    .success{
+        font-size: 0.9rem;
+    }
+
+    .shipping span svg{
+        font-size: 1.3rem;
+    }
+
+    .customerDetails{
+        padding: 0.5rem 0.5rem;
+        margin: 1rem;
+    }
+
+    .orderDetails h3{
+        font-size: 1rem;
+    }
+
+    .shipping h3{
+        font-size: 1rem;
+    }
+
+    .shipping p{
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .orderDetails ul{
+        font-size: 0.9rem;
+    }
+
+    .totalAmount{
+        font-size: 0.9rem;
+    }
+}
